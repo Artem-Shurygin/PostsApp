@@ -1,12 +1,15 @@
 import React from "react";
+import CSSModules from "react-css-modules";
+import styles from "./PostCard.module.scss";
 
-function PostCard({ name, text }: any) {
+function PostCard({ title, text, date }: any) {
 	return (
-		<div style={{ border: "1px solid black", marginTop: "50px"}}>
-			<p>{name}</p>
-			<p>{text}</p>
+		<div styleName="post">
+			<p styleName="post__title">{title}</p>
+			<p styleName="post__text">{text}</p>
+			<p styleName="post__date">{date}</p>
 		</div>
 	);
 }
 
-export default PostCard;
+export default CSSModules(PostCard, styles, { allowMultiple: true });

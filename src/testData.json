@@ -1,0 +1,20 @@
+[
+  {
+    "id": 0,
+    "title": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, eos.",
+    "text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima veniam in architecto commodi earum ipsa et dolorum, eveniet, totam non esse nobis! Vero, nemo dolor cupiditate, nisi totam nesciunt deleniti eum delectus ducimus dolores sunt id est autem officia doloremque dolorum obcaecati, ratione fuga a! In deleniti non dolores voluptatibus libero delectus nemo provident? Nesciunt, id animi. Praesentium quidem eos magnam quas voluptate dolorum id. Corporis quasi sequi aliquam sunt alias cumque iure quis mollitia temporibus! Ipsum neque tempora aperiam eveniet minus id voluptate doloribus accusamus cupiditate laudantium doloremque, deleniti dolore. Nulla commodi autem non ab inventore architecto fugiat quia!",
+    "date": "25.05.25"
+  },
+  {
+    "id": 1,
+    "title": "Lorem ipsum dolor sit amet.",
+    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia molestiae ratione aut iure omnis impedit quo sunt natus! Modi nostrum dolore maiores laudantium voluptatibus blanditiis repudiandae odio iure optio, exercitationem impedit in quis maxime. Adipisci ad quis, corrupti, fuga nihil id, doloribus ut porro illum quod consequatur repudiandae obcaecati dolores?",
+    "date": "22.05.25"
+  },
+  {
+    "id": 2,
+    "title": "Lorem, ipsum dolor.",
+    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente maxime magni tenetur laborum saepe rem dolore natus molestiae quae cupiditate? Dolores blanditiis impedit hic nihil mollitia similique accusantium molestiae, inventore quos aut qui atque dolorem ad omnis perspiciatis sed deserunt animi reiciendis voluptate sapiente suscipit. Exercitationem cum ducimus placeat eaque aspernatur quam doloribus ipsa vero rerum excepturi laudantium consectetur accusamus harum officiis ab praesentium facere assumenda, ea minima dolorum commodi!",
+    "date": "20.05.25"
+  }
+]

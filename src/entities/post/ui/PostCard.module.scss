@@ -1,0 +1,21 @@
+.post {
+	padding: 0 50px;
+
+	&__title {
+		font-size: 20px;
+		color: rgb(255, 52, 52);
+	}
+
+	&__text {
+		padding-top: 16px;
+		text-align: justify;
+		color: white;
+	}
+
+	&__date {
+		display: flex;
+		justify-content: end;
+		padding-top: 16px;
+		color: rgb(179, 179, 179);
+	}
+}

@@ -1,0 +1,18 @@
+.post {
+  padding: 0 50px;
+}
+.post__title {
+  font-size: 20px;
+  color: rgb(255, 52, 52);
+}
+.post__text {
+  padding-top: 16px;
+  text-align: justify;
+  color: white;
+}
+.post__date {
+  display: flex;
+  justify-content: end;
+  padding-top: 16px;
+  color: rgb(179, 179, 179);
+}/*# sourceMappingURL=PostCard.module.css.map */
