@@ -1,16 +1,17 @@
-import React from "react";
+import { useContext } from "react";
 import PostCard from "@/entities/post/ui/PostCard";
 import CSSModules from "react-css-modules";
 import styles from "./PostList.module.scss";
 import testData from "@/testData.json";
+import { useTheme } from "@/shared/lib/theme/useTheme";
 
 function PostList() {
+	const { theme } = useContext(useTheme);
 	return (
-		<div styleName="backgrond">
-			<div className="container" styleName="post-list">
-				<h1 styleName="heading">Posts</h1>
-				{testData.map((item) => (
-					<PostCard key={item.id} id={item.id} title={item.title} text={item.text} date={item.date} />
+		<div styleName="backgrond" data-theme={theme}>
+			<div className="container" styleName="post-list" data-theme={theme}>
+				{testData.map((post) => (
+					<PostCard key={post.id} id={post.id} title={post.title} text={post.text} date={post.date} />
 				))}
 			</div>
 		</div>

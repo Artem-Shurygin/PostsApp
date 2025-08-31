@@ -1,13 +1,15 @@
-import React from "react";
+import { useContext } from "react";
 import CSSModules from "react-css-modules";
 import styles from "./PostCard.module.scss";
+import { useTheme } from "@/shared/lib/theme/useTheme";
 
 function PostCard({ title, text, date }: any) {
+		const { theme } = useContext(useTheme);
 	return (
-		<div styleName="post">
-			<p styleName="post__title">{title}</p>
-			<p styleName="post__text">{text}</p>
-			<p styleName="post__date">{date}</p>
+		<div styleName="post" data-theme={theme}>
+			<p styleName="post__title" data-theme={theme}>{title}</p>
+			<p styleName="post__text" data-theme={theme}>{text}</p>
+			<p styleName="post__date" data-theme={theme}>{date}</p>
 		</div>
 	);
 }

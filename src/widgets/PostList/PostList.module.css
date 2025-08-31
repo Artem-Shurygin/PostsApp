@@ -1,4 +1,8 @@
-.backgrond {
+.backgrond[data-theme=light] {
+  background-color: white;
+}
+
+.backgrond[data-theme=dark] {
   background-color: #141414;
 }
 
@@ -7,6 +11,9 @@
   flex-direction: column;
   gap: 45px;
   min-height: 100vh;
+  padding: 30px;
+}
+.post-list[data-theme=dark] {
   background-color: #222222;
 }
 

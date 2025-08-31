@@ -1,5 +1,7 @@
 .post {
-	padding: 0 50px;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
 
 	&__title {
 		font-size: 20px;
@@ -7,15 +9,16 @@
 	}
 
 	&__text {
-		padding-top: 16px;
 		text-align: justify;
-		color: white;
+		color: black;
+		&[data-theme="dark"] {
+			color: white;
+		}
 	}
 
 	&__date {
 		display: flex;
 		justify-content: end;
-		padding-top: 16px;
 		color: rgb(179, 179, 179);
 	}
 }

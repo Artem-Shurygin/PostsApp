@@ -1,0 +1,52 @@
+.wrapper[data-theme="dark"] {
+	background-color: #141414;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	padding: 20px 30px;
+
+	&[data-theme="light"] {
+		border-bottom: 1px solid black;
+	}
+
+	&__title {
+		font-style: italic;
+		color: red;
+	}
+
+	&__button-box {
+		display: flex;
+		align-items: center;
+		gap: 20px;
+	}
+}
+
+.title {
+	font-style: italic;
+	color: red;
+}
+
+.about {
+	width: 30px;
+	height: 30px;
+	background: inherit;
+	border: none;
+	cursor: pointer;
+
+	&[data-theme="dark"] {
+		fill: white;
+	}
+}
+.modal {
+	&__title {
+		font-size: 24px;
+	}
+
+	&__text {
+		margin-top: 10px;
+		font-size: 16px;
+		text-align: justify;
+	}
+}

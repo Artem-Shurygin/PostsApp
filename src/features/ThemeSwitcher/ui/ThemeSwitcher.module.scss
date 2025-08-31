@@ -1,0 +1,10 @@
+.switch-button {
+	width: 30px;
+	height: 30px;
+	background: inherit;
+	border: none;
+	cursor: pointer;
+	&[data-theme="dark"] {
+		fill: white;
+	}
+}
