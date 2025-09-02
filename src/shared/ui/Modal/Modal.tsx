@@ -1,5 +1,4 @@
-import CSSModules from "react-css-modules";
-import styles from "./Modal.module.css";
+import styles from "./Modal.module.scss";
 import { type PropsWithChildren } from "react";
 import ReactDOM from "react-dom";
 type ModalProps = {

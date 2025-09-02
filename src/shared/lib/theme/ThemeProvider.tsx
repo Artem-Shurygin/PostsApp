@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {useTheme} from "@/shared/lib/theme/useTheme";
 
 type Theme = "light" | "dark";
