@@ -1,6 +1,6 @@
 import { useState } from "react";
 import clsx from "clsx";
-import Modal from "@/shared/ui/Modal/Modal";
+import Portal from "@/shared/ui/Portal/Portal";
 import styles from "./Header.module.scss";
 import ThemeSwitcher from "@/features/ThemeSwitcher/ui/ThemeSwitcher";
 import { useTheme } from "@/shared/lib/theme/useTheme";
@@ -11,7 +11,7 @@ const Header = () => {
 	return (
 		<div className={clsx(theme === "dark" && styles.wrapper__dark_theme)}>
 			<div className={clsx("container", styles.header, theme === "dark" && styles.header__dark_theme)}>
-				<Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+				<Portal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 				<h1 className={styles.header__title}>Posts</h1>
 				<div className={styles.header__button_box}>
 					<button
