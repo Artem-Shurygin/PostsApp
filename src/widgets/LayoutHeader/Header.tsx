@@ -11,20 +11,7 @@ const Header = () => {
 	return (
 		<div className={clsx(theme === "dark" && styles.wrapper__dark_theme)}>
 			<div className={clsx("container", styles.header, theme === "dark" && styles.header__dark_theme)}>
-				<Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-					<p className={styles.modal__title}>Project info</p>
-					<p className={styles.modal__text}>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, quidem esse dicta dolorem debitis quaerat ut
-						incidunt, molestiae blanditiis corrupti voluptatum minus, ullam enim similique fugiat. Nemo distinctio
-						voluptatum voluptatem itaque et quas! Facere itaque minima odit assumenda nulla, error temporibus,
-						consequatur illo ea sed totam amet officiis, quia voluptatum? Tenetur, magni. Fuga blanditiis reiciendis
-						veritatis magni consequatur magnam ipsa voluptatibus perferendis, dignissimos modi repellat quibusdam,
-						facere alias nam placeat eius, exercitationem aperiam hic saepe? Placeat distinctio, natus reprehenderit eum
-						nulla repellat id nostrum possimus provident, atque sunt, perspiciatis labore inventore adipisci vitae ex?
-						Numquam nam officiis quia officia enim.
-					</p>
-				</Modal>
-
+				<Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 				<h1 className={styles.header__title}>Posts</h1>
 				<div className={styles.header__button_box}>
 					<button
