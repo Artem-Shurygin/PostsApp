@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import type { FC } from "react";
 import clsx from "clsx";
 import { useTheme } from "@/shared/lib/theme/useTheme";
@@ -12,7 +11,7 @@ type PostProps = {
 };
 
 const PostCard: FC<PostProps> = ({ title, text, date }) => {
-	const { theme } = useContext(useTheme);
+	const { theme } = useTheme();
 	return (
 		<div className={styles.post}>
 			<p className={styles.post__title}>{title}</p>

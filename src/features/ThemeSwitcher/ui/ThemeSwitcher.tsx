@@ -1,10 +1,9 @@
-import { useContext } from "react";
 import { useTheme } from "@/shared/lib/theme/useTheme";
 import clsx from "clsx";
 import styles from "./ThemeSwitcher.module.scss";
 
 const ThemeSwitcher = () => {
-	const { theme, setTheme } = useContext(useTheme);
+	const { theme, setTheme } = useTheme();
 	const handleSwitchTheme = () => {
 		setTheme(theme === "light" ? "dark" : "light");
 	};

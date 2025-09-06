@@ -1,10 +1,9 @@
-import { useContext } from "react";
 import { useTheme } from "@/shared/lib/theme/useTheme";
 import clsx from "clsx";
 import styles from "./Footer.module.scss";
 
 const Header = () => {
-	const { theme } = useContext(useTheme);
+	const { theme } = useTheme();
 	return (
 		<div className={clsx(theme === "dark" && styles.wrapper__dark_theme)}>
 			<div className={clsx("container", styles.footer)}>

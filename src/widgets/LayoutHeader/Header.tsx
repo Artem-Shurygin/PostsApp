@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import clsx from "clsx";
 import Modal from "@/shared/ui/Modal/Modal";
 import styles from "./Header.module.scss";
@@ -7,7 +7,7 @@ import { useTheme } from "@/shared/lib/theme/useTheme";
 
 const Header = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
-	const { theme } = useContext(useTheme);
+	const { theme } = useTheme();
 	return (
 		<div className={clsx(theme === "dark" && styles.wrapper__dark_theme)}>
 			<div className={clsx("container", styles.header, theme === "dark" && styles.header__dark_theme)}>

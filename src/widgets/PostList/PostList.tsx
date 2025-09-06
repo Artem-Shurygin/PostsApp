@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import clsx from "clsx";
 import PostCard from "@/entities/post/ui/PostCard/PostCard";
 import styles from "./PostList.module.scss";
@@ -16,7 +15,7 @@ import { useTheme } from "@/shared/lib/theme/useTheme";
 const PostList = () => {
 	const data = JSON.parse(testData);
 
-	const { theme } = useContext(useTheme);
+	const { theme } = useTheme();
 	return (
 		<div className={clsx(styles.wrapper, theme === "dark" && styles.wrapper__dark_theme)}>
 			<div className={clsx("container", styles.post_list, theme === "dark" && styles.post_list__dark_theme)}>
