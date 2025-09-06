@@ -1,8 +1,8 @@
+import clsx from "clsx";
 import PostCard from "@/entities/post/ui/PostCard/PostCard";
-import CSSModules from "react-css-modules";
-import styles from "./PostList.module.scss";
 import testData from "@/testData";
-import formatDate from "@/utils/formatDate"
+import formatDate from "@/utils/formatDate";
+import styles from "./PostList.module.scss";
 
 type Post = {
 	id: number;
@@ -11,17 +11,12 @@ type Post = {
 	date: string;
 };
 
-function PostList() {
+const PostList = () => {
 	const data = JSON.parse(testData);
-
-	const dataSortedByNovelty: Array<any> = Object.values(data).sort((a: any, b: any) => b.id - a.id);
-
 	return (
-		<div styleName="backgrond">
-			<div className="container" styleName="post-list">
-				<h1 styleName="heading">Posts</h1>
-				{dataSortedByNovelty.map((post: Post) => {
-					console.log(typeof post.date);
+		<div className={styles.wrapper}>
+			<div className={clsx("container", styles.post_list)}>
+				{data.map((post: Post) => {
 					return (
 						<PostCard key={post.id} id={post.id} title={post.title} text={post.text} date={formatDate(post.date)} />
 					);
@@ -29,6 +24,6 @@ function PostList() {
 			</div>
 		</div>
 	);
-}
+};
 
-export default CSSModules(PostList, styles, { allowMultiple: true });
+export default PostList;

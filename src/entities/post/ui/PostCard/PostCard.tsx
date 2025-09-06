@@ -1,14 +1,21 @@
-import CSSModules from "react-css-modules";
+import type { FC} from "react";
 import styles from "./PostCard.module.scss";
 
-function PostCard({ title, text, date }: any) {
+type PostProps = {
+	id: number;
+	title: string;
+	text: string;
+	date: string;
+};
+
+const PostCard: FC<PostProps> = ({ title, text, date }) => {
 	return (
-		<div styleName="post">
-			<p styleName="post__title">{title}</p>
-			<p styleName="post__text">{text}</p>
-			<p styleName="post__date">{date}</p>
+		<div className={styles.post}>
+			<p className={styles.post__title}>{title}</p>
+			<p className={styles.post__text}>{text}</p>
+			<p className={styles.post__date}>{date}</p>
 		</div>
 	);
-}
+};
 
-export default CSSModules(PostCard, styles, { allowMultiple: true });
+export default PostCard;
