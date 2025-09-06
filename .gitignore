@@ -24,6 +24,4 @@ dist-ssr
 *.sw?
 
 # My files
-ToDO.md
-commands.md
-myComments.md
+myGitignoreFiles

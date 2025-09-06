@@ -1,0 +1,14 @@
+.wrapper {
+	&__dark_theme {
+		background-color: #141414;
+	}
+}
+
+.footer {
+	display: flex;
+	padding: 30px;
+
+	&__copyright {
+		color: rgb(179, 179, 179);
+	}
+}

@@ -1,17 +1,25 @@
 import { useContext } from "react";
-import CSSModules from "react-css-modules";
-import styles from "./PostCard.module.scss";
+import type { FC } from "react";
+import clsx from "clsx";
 import { useTheme } from "@/shared/lib/theme/useTheme";
+import styles from "./PostCard.module.scss";
 
-function PostCard({ title, text, date }: any) {
-		const { theme } = useContext(useTheme);
+type PostProps = {
+	id: number;
+	title: string;
+	text: string;
+	date: string;
+};
+
+const PostCard: FC<PostProps> = ({ title, text, date }) => {
+	const { theme } = useContext(useTheme);
 	return (
-		<div styleName="post" data-theme={theme}>
-			<p styleName="post__title" data-theme={theme}>{title}</p>
-			<p styleName="post__text" data-theme={theme}>{text}</p>
-			<p styleName="post__date" data-theme={theme}>{date}</p>
+		<div className={styles.post}>
+			<p className={styles.post__title}>{title}</p>
+			<p className={clsx(styles.post__text, theme === "dark" && styles.post__text__dark_theme)}>{text}</p>
+			<p className={styles.post__date}>{date}</p>
 		</div>
 	);
-}
+};
 
-export default CSSModules(PostCard, styles, { allowMultiple: true });
+export default PostCard;

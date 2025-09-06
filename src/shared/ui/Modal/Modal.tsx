@@ -1,12 +1,14 @@
+import type { FC, ReactNode } from "react";
 import styles from "./Modal.module.scss";
-import { type PropsWithChildren } from "react";
 import ReactDOM from "react-dom";
+
 type ModalProps = {
 	isOpen: boolean;
 	onClose: () => void;
+	children: ReactNode;
 };
 
-function Modal({ isOpen, onClose, children}: PropsWithChildren<ModalProps>) {
+const Modal: FC<ModalProps> = ({ isOpen, onClose, children }) => {
 	let rootEl = document.querySelector("#root");
 	if (!rootEl) rootEl = document.body;
 
@@ -24,9 +26,6 @@ function Modal({ isOpen, onClose, children}: PropsWithChildren<ModalProps>) {
 		</div>,
 		rootEl
 	);
-}
+};
 
 export default Modal;
-
-//не работает(Uncaught TypeError: Cannot read properties of undefined (reading 'constructor'))
-// export default CSSModules(Modal, styles, { allowMultiple: true });

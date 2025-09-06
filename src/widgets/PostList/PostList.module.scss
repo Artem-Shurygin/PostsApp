@@ -1,23 +1,17 @@
-.backgrond[data-theme="light"] {
+.wrapper {
 	background-color: white;
-}
-.backgrond[data-theme="dark"] {
-	background-color: #141414;
+	&__dark_theme {
+		background-color: #141414;
+	}
 }
 
-.post-list {
+.post_list {
 	display: flex;
 	flex-direction: column;
 	gap: 45px;
 	min-height: 100vh;
 	padding: 30px;
-	&[data-theme="dark"] {
+	&__dark_theme {
 		background-color: #222222;
 	}
-}
-
-.heading {
-	display: flex;
-	justify-content: center;
-	color: white;
 }

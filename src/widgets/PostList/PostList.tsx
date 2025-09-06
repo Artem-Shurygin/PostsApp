@@ -1,9 +1,9 @@
 import { useContext } from "react";
+import clsx from "clsx";
 import PostCard from "@/entities/post/ui/PostCard/PostCard";
-import CSSModules from "react-css-modules";
 import styles from "./PostList.module.scss";
 import testData from "@/testData";
-import formatDate from "@/utils/formatDate"
+import formatDate from "@/utils/formatDate";
 
 type Post = {
 	id: number;
@@ -13,17 +13,14 @@ type Post = {
 };
 import { useTheme } from "@/shared/lib/theme/useTheme";
 
-function PostList() {
+const PostList = () => {
 	const data = JSON.parse(testData);
-
-	const dataSortedByNovelty: Array<any> = Object.values(data).sort((a: any, b: any) => b.id - a.id);
 
 	const { theme } = useContext(useTheme);
 	return (
-		<div styleName="backgrond" data-theme={theme}>
-			<div className="container" styleName="post-list" data-theme={theme}>
-				{dataSortedByNovelty.map((post: Post) => {
-					console.log(typeof post.date);
+		<div className={clsx(styles.wrapper, theme === "dark" && styles.wrapper__dark_theme)}>
+			<div className={clsx("container", styles.post_list, theme === "dark" && styles.post_list__dark_theme)}>
+				{data.map((post: Post) => {
 					return (
 						<PostCard key={post.id} id={post.id} title={post.title} text={post.text} date={formatDate(post.date)} />
 					);
@@ -31,6 +28,6 @@ function PostList() {
 			</div>
 		</div>
 	);
-}
+};
 
-export default CSSModules(PostList, styles, { allowMultiple: true });
+export default PostList;

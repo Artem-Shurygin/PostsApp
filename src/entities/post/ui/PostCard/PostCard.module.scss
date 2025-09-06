@@ -11,7 +11,7 @@
 	&__text {
 		text-align: justify;
 		color: black;
-		&[data-theme="dark"] {
+		&__dark_theme {
 			color: white;
 		}
 	}
