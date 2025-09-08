@@ -1,0 +1,51 @@
+.comment_list {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+
+	&__toggle_comments_btn {
+		width: fit-content;
+		cursor: pointer;
+		border: none;
+		background-color: inherit;
+		color: rgb(8, 143, 253);
+	}
+
+	&__coomments_box {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		padding-left: 50px;
+	}
+
+	&__comment {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		padding: 10px 0;
+		border-bottom: 1px solid rgb(179, 179, 179);
+		&:last-child {
+			border-bottom: none;
+		}
+	}
+
+	&__author {
+		font-weight: bold;
+		color: black;
+		&__dark_theme {
+			color: white;
+		}
+	}
+
+	&__text {
+		text-align: justify;
+		color: black;
+		&__dark_theme {
+			color: white;
+		}
+	}
+
+	&__date {
+		color: rgb(179, 179, 179);
+	}
+}
