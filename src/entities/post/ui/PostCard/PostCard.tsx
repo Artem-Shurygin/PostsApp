@@ -10,7 +10,7 @@ type PostProps = {
 	date: string;
 };
 
-const PostCard: FC<PostProps> = ({ title, text, date }) => {
+export const PostCard: FC<PostProps> = ({ title, text, date }) => {
 	const { theme } = useTheme();
 	return (
 		<div className={styles.post}>
@@ -20,5 +20,3 @@ const PostCard: FC<PostProps> = ({ title, text, date }) => {
 		</div>
 	);
 };
-
-export default PostCard;

@@ -1,8 +1,8 @@
 import clsx from "clsx";
-import PostCard from "@/entities/post/ui/PostCard/PostCard";
+import { PostCard } from "@/entities/post/ui/PostCard/PostCard";
 import styles from "./PostList.module.scss";
-import testData from "@/testData";
-import formatDate from "@/utils/formatDate";
+import { testPostData } from "@/shared/mocks/testPostData";
+import { formatDate } from "@/utils/formatDate";
 
 type Post = {
 	id: number;
@@ -12,8 +12,8 @@ type Post = {
 };
 import { useTheme } from "@/shared/lib/theme/useTheme";
 
-const PostList = () => {
-	const data = JSON.parse(testData);
+export const PostList = () => {
+	const data: Post[] = testPostData;
 
 	const { theme } = useTheme();
 	return (
@@ -28,5 +28,3 @@ const PostList = () => {
 		</div>
 	);
 };
-
-export default PostList;

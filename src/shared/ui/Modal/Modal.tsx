@@ -1,16 +1,20 @@
 import type { FC } from "react";
-import { useCallback } from "react";
+import { createPortal } from "react-dom";
 import styles from "./Modal.module.scss";
+import { usePortal } from "./usePortal";
 
 type PortalProps = {
+	isOpen: boolean;
 	onClose: () => void;
 };
 
-const Portal: FC<PortalProps> = ({ onClose }) => {
-	const handleCloseButtonClick = useCallback(() => {
-		onClose();
-	}, [onClose]);
-	return (
+export const Modal: FC<PortalProps> = ({ isOpen, onClose }) => {
+	const handleCloseButtonClick = () => onClose();
+	const portalElement = usePortal("root");
+
+	if (!isOpen) return null;
+
+	return createPortal(
 		<div className={styles.modal}>
 			<div className={styles.modal__content}>
 				<button className={styles.modal__close} onClick={handleCloseButtonClick}>
@@ -30,8 +34,7 @@ const Portal: FC<PortalProps> = ({ onClose }) => {
 					quia officia enim.
 				</p>
 			</div>
-		</div>
+		</div>,
+		portalElement
 	);
 };
-
-export default Portal;
