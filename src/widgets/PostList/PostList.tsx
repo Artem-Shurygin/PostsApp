@@ -1,7 +1,7 @@
 import clsx from "clsx";
-import PostCard from "@/entities/post/ui/PostCard/PostCard";
-import testData from "@/testData";
-import formatDate from "@/utils/formatDate";
+import { PostCard } from "@/entities/post/ui/PostCard/PostCard";
+import { testPostData } from "@/shared/mocks/testData";
+import { formatDate } from "@/utils/formatDate";
 import styles from "./PostList.module.scss";
 
 type Post = {
@@ -11,8 +11,8 @@ type Post = {
 	date: string;
 };
 
-const PostList = () => {
-	const data = JSON.parse(testData);
+export const PostList = () => {
+	const data: Post[] = testPostData;
 	return (
 		<div className={styles.wrapper}>
 			<div className={clsx("container", styles.post_list)}>
@@ -25,5 +25,3 @@ const PostList = () => {
 		</div>
 	);
 };
-
-export default PostList;

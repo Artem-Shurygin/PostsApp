@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import styles from "./Footer.module.scss";
 
-const Header = () => {
+export const Footer = () => {
 	return (
 		<div className={styles.wrapper}>
 			<div className={clsx("container", styles.footer)}>
@@ -10,5 +10,3 @@ const Header = () => {
 		</div>
 	);
 };
-
-export default Header;

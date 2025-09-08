@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import styles from "./Header.module.scss";
 
-const Header = () => {
+export const Header = () => {
 	return (
 		<div className={styles.wrapper}>
 			<div className={clsx("container", styles.header)}>
@@ -10,5 +10,3 @@ const Header = () => {
 		</div>
 	);
 };
-
-export default Header;

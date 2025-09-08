@@ -1,4 +1,4 @@
-import type { FC} from "react";
+import type { FC } from "react";
 import styles from "./PostCard.module.scss";
 
 type PostProps = {
@@ -8,7 +8,7 @@ type PostProps = {
 	date: string;
 };
 
-const PostCard: FC<PostProps> = ({ title, text, date }) => {
+export const PostCard: FC<PostProps> = ({ title, text, date }) => {
 	return (
 		<div className={styles.post}>
 			<p className={styles.post__title}>{title}</p>
@@ -17,5 +17,3 @@ const PostCard: FC<PostProps> = ({ title, text, date }) => {
 		</div>
 	);
 };
-
-export default PostCard;
