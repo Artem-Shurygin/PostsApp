@@ -6,8 +6,8 @@ type ComponentWithLoadingProps = ComponentType<{
 	isLoading?: boolean;
 }>;
 
-function withLoading(WrappedComponent: ComponentWithLoadingProps) {
-	return function WithLoadingComponent(...props: any[]) {
+export const withLoading = <Props extends object>(WrappedComponent: ComponentWithLoadingProps) => {
+	return function WithLoadingComponent(...props: Props[]) {
 		const [isLoading, setIsLoading] = useState(true);
 		useEffect(() => {
 			// Имитация загрузки данных
@@ -22,6 +22,4 @@ function withLoading(WrappedComponent: ComponentWithLoadingProps) {
 		}
 		return <WrappedComponent {...props} isLoading={isLoading} />;
 	};
-}
-
-export default withLoading;
+};

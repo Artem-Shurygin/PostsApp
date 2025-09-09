@@ -3,7 +3,7 @@ import { useState } from "react";
 import type { FC } from "react";
 import clsx from "clsx";
 import { useTheme } from "@/shared/lib/theme/useTheme";
-import formatDate from "@/utils/formatDate";
+import { formatDate } from "@/utils/formatDate";
 import styles from "./CommentList.module.scss";
 
 type PostComment = {
@@ -17,7 +17,7 @@ type CommentListProps = {
 	comments: PostComment[];
 };
 
-const CommentList: FC<CommentListProps> = ({ comments }) => {
+export const CommentList: FC<CommentListProps> = ({ comments }) => {
 	const { theme } = useTheme();
 	const [isCommentsOpen, setIsCommentsOpen] = useState(false);
 
@@ -27,13 +27,24 @@ const CommentList: FC<CommentListProps> = ({ comments }) => {
 
 	return (
 		<div className={styles.comment_list}>
-			<button onClick={handleClickCommentdBtn} className={styles.comment_list__toggle_comments_btn}>комментарии</button>
+			<button onClick={handleClickCommentdBtn} className={styles.comment_list__toggle_comments_btn}>
+				комментарии
+			</button>
 			{isCommentsOpen && (
 				<div className={styles.comment_list__coomments_box}>
 					{comments.map((comment) => (
 						<div key={`comment-${comment.id}`} className={styles.comment_list__comment}>
-							<p className={clsx(styles.comment_list__author, theme === "dark" && styles.comment_list__author__dark_theme)}>{comment.author}</p>
-							<p  className={clsx(styles.comment_list__text, theme === "dark" && styles.comment_list__text__dark_theme)}>{comment.text}</p>
+							<p
+								className={clsx(
+									styles.comment_list__author,
+									theme === "dark" && styles.comment_list__author__dark_theme
+								)}
+							>
+								{comment.author}
+							</p>
+							<p className={clsx(styles.comment_list__text, theme === "dark" && styles.comment_list__text__dark_theme)}>
+								{comment.text}
+							</p>
 							<p className={styles.comment_list__date}>{formatDate(comment.date)}</p>
 						</div>
 					))}
@@ -42,5 +53,3 @@ const CommentList: FC<CommentListProps> = ({ comments }) => {
 		</div>
 	);
 };
-
-export default CommentList;

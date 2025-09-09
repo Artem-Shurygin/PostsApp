@@ -1,4 +1,4 @@
-const formateDate = (dateString: string): string => {
+export const formatDate = (dateString: string): string => {
 	const date = new Date(dateString);
 	const datePart = date.toLocaleDateString("ru-RU", {
 		year: "2-digit",
@@ -10,5 +10,3 @@ const formateDate = (dateString: string): string => {
 	});
 	return `${datePart} в ${timePart}`;
 };
-
-export default formateDate;

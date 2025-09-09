@@ -1,4 +1,5 @@
-import type { ChangeEvent } from "react";
+import type { FC, ChangeEvent } from "react";
+import { filterPostsByLength } from "@/features/PostLengthFilter/lib/filterByLength.ts";
 
 type PostComment = {
 	id: number;
@@ -20,31 +21,11 @@ type PostLengthFilterProps = {
 	onDataSend: (data: Post[]) => void;
 };
 
-const PostLengthFilter = ({ posts, onDataSend }: any) => {
-	let filteredPosts: Post[] = [];
-
+export const PostLengthFilter: FC<PostLengthFilterProps> = ({ posts, onDataSend }) => {
 	const handleСhangeFilter = (e: ChangeEvent<HTMLSelectElement>) => {
-		switch (e.target.value) {
-			case "shortTitlePosts":
-				//короткий заголовок
-				filteredPosts = Object.values(posts).sort(
-					(a, b) => (a as Post).title.length - (b as Post).title.length
-				) as Post[];
-				onDataSend(filteredPosts);
-				break;
-			case "longTitlePosts":
-				//длинный заголовок
-				filteredPosts = Object.values(posts).sort(
-					(a, b) => (b as Post).title.length - (a as Post).title.length
-				) as Post[];
-				onDataSend(filteredPosts);
-				break;
-			default:
-				onDataSend(posts);
-				break;
-		}
+		const filteredPosts: Post[] = filterPostsByLength(posts, e.target.value);
+		onDataSend(filteredPosts);
 	};
-
 	return (
 		<select name="postsFilter" id="postsFilter" onChange={handleСhangeFilter}>
 			<option value="unfiltered">Без фильтра</option>
@@ -53,5 +34,3 @@ const PostLengthFilter = ({ posts, onDataSend }: any) => {
 		</select>
 	);
 };
-
-export default PostLengthFilter;
