@@ -1,0 +1,12 @@
+.wrapper {
+	background-color: #141414;
+}
+
+.footer {
+	display: flex;
+	padding: 20px 50px;
+
+	&__copyright {
+		color: rgb(179, 179, 179);
+	}
+}

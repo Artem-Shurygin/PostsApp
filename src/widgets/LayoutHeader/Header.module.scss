@@ -1,0 +1,14 @@
+.wrapper {
+	background-color: #141414;
+}
+
+.header {
+	display: flex;
+	justify-content: center;
+	padding: 20px 50px;
+
+	&__title {
+		font-style: italic;
+		color: red;
+	}
+}
