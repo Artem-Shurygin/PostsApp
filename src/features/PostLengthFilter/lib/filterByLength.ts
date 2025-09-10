@@ -14,8 +14,6 @@ type Post = {
 };
 
 export const filterPostsByLength = (filteredData: Post[], filterValue: string): Post[] => {
-	console.log(filterValue);
-	console.log(filteredData);
 	switch (filterValue) {
 		case "shortTitlePosts":
 			return Object.values(filteredData).sort((a, b) => (a as Post).title.length - (b as Post).title.length) as Post[];

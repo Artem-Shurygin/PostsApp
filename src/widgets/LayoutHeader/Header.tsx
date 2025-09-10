@@ -1,9 +1,10 @@
 import { useState } from "react";
 import clsx from "clsx";
-import { Modal } from "@/shared/ui/Modal/Modal";
 import styles from "./Header.module.scss";
-import { ThemeSwitcher } from "@/features/ThemeSwitcher/ui/ThemeSwitcher";
 import { useTheme } from "@/shared/lib/theme/useTheme";
+import { Modal } from "@/shared/ui/Modal/Modal";
+import { ThemeSwitcher } from "@/features/ThemeSwitcher/ui/ThemeSwitcher";
+import { UserTabs } from "@/widgets/UserTabs/UserTabs";
 
 export const Header = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
@@ -42,6 +43,7 @@ export const Header = () => {
 					</Modal.Footer>
 				</Modal>
 				<h1 className={styles.header__title}>Posts</h1>
+				<UserTabs />
 				<div className={styles.header__button_box}>
 					<button
 						className={clsx(styles.header__modal_btn, theme === "dark" && styles.header__modal_btn__dark_theme)}

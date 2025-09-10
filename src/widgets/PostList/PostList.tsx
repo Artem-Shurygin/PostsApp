@@ -3,11 +3,8 @@ import { PostCard } from "@/entities/post/ui/PostCard/PostCard";
 import { PostLengthFilter } from "@/features/PostLengthFilter/ui/PostLengthFilter";
 import { withLoading } from "@/shared/lib/hoc/WithLoading";
 import styles from "./PostList.module.scss";
-import { testDataPostWithComments } from "@/shared/mocks/testDataPostWithComments";
 import { formatDate } from "@/utils/formatDate";
-
-import { useState, useMemo } from "react";
-import { useTheme } from "@/shared/lib/theme/useTheme";
+import { usePosts } from "./model/hooks/usePosts";
 
 type PostComment = {
 	id: number;
@@ -24,20 +21,12 @@ type Post = {
 };
 
 const PostList = () => {
-	const { theme } = useTheme();
-	const data: Post[] = useMemo(() => testDataPostWithComments, []);
-
-	const [filterData, setfilterData] = useState(data);
-
-	const handleDataFromFilter = (data: Post[]) => {
-		setfilterData(data);
-	};
-
+	const { theme, data, filteredData, handleDataFromFilter } = usePosts();
 	return (
 		<div className={clsx(styles.wrapper, theme === "dark" && styles.wrapper__dark_theme)}>
 			<div className={clsx("container", styles.post_list, theme === "dark" && styles.post_list__dark_theme)}>
 				<PostLengthFilter posts={data} onDataSend={handleDataFromFilter} />
-				{filterData.map((post: Post) => {
+				{filteredData.map((post: Post) => {
 					return (
 						<PostCard
 							key={post.id}

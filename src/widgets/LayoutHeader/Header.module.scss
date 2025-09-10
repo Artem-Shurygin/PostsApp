@@ -26,19 +26,14 @@
 	}
 
 	&__modal_btn {
-	width: 30px;
-	height: 30px;
-	background: inherit;
-	border: none;
-	cursor: pointer;
+		width: 30px;
+		height: 30px;
+		background: inherit;
+		border: none;
+		cursor: pointer;
 
-	&__dark_theme {
-		fill: white;
+		&__dark_theme {
+			fill: white;
+		}
 	}
-}
-}
-
-.title {
-	font-style: italic;
-	color: red;
 }

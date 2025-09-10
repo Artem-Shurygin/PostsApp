@@ -1,10 +1,7 @@
-import { PostList } from "@/widgets/PostList/PostList";
-import { MainLayout } from "@/shared/layouts/MainLayout";
+import {router} from "./router"
+
+import { RouterProvider } from "react-router-dom";
 
 export const App = () => {
-	return (
-		<MainLayout>
-			<PostList />
-		</MainLayout>
-	);
+	return <RouterProvider router={router} />;
 };
