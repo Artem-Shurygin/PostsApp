@@ -1,14 +1,44 @@
 .wrapper {
-	background-color: #141414;
+	&__dark_theme {
+		background-color: #141414;
+	}
 }
 
 .header {
 	display: flex;
-	justify-content: center;
-	padding: 20px 50px;
+	justify-content: space-between;
+	padding: 20px 30px;
+	border-bottom: 1px solid black;
+
+	&[data-theme="dark"] {
+		border-bottom: none;
+	}
 
 	&__title {
 		font-style: italic;
 		color: red;
 	}
+
+	&__button_box {
+		display: flex;
+		align-items: center;
+		gap: 20px;
+	}
+
+	&__modal_btn {
+	width: 30px;
+	height: 30px;
+	background: inherit;
+	border: none;
+	cursor: pointer;
+
+	&__dark_theme {
+		fill: white;
+	}
+}
+}
+
+.title {
+	font-style: italic;
+	color: red;
 }
