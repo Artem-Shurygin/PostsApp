@@ -28,8 +28,12 @@ export const PostCard: FC<PostProps> = ({ id, title, text, date, comments }) => 
 				{title}
 			</NavLink>
 			<p className={clsx(styles.post__text, theme === "dark" && styles.post__text__dark_theme)}>{text}</p>
-			<p className={styles.post__date}>{date}</p>
+			<div className={styles.post__footer}>
+			
 			<CommentList comments={comments} />
+			<p className={styles.post__date}>{date}</p>
+			</div>
+
 		</div>
 	);
 };

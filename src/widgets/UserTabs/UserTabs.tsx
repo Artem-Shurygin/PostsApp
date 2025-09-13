@@ -4,7 +4,7 @@ import styles from "./UserTabs.module.scss";
 
 export const UserTabs: FC = () => {
 	let { id } = useParams();
-	if (!id) id = "1";
+	if (!id) id = "0";
 
 	return (
 		<nav className={styles.user_tabs}>
