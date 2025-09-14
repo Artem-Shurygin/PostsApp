@@ -1,10 +1,10 @@
-import { PostList } from "@/widgets/PostList/PostList";
 import { MainLayout } from "@/shared/layouts/MainLayout";
+import { PostListWithLoading } from "@/widgets/PostList/PostListWithLoading";
 
 export const App = () => {
 	return (
 		<MainLayout>
-			<PostList />
+			<PostListWithLoading />
 		</MainLayout>
 	);
 };

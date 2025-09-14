@@ -1,12 +1,9 @@
+import { useState, type FC } from "react";
 import clsx from "clsx";
 import { PostCard } from "@/entities/post/ui/PostCard/PostCard";
 import { PostLengthFilter } from "@/features/PostLengthFilter/ui/PostLengthFilter";
-import { withLoading } from "@/shared/lib/hoc/WithLoading";
 import styles from "./PostList.module.scss";
 import { testDataPostWithComments } from "@/shared/mocks/testDataPostWithComments";
-import { formatDate } from "@/utils/formatDate";
-
-import { useState, useMemo } from "react";
 import { useTheme } from "@/shared/lib/theme/useTheme";
 
 type PostComment = {
@@ -23,9 +20,9 @@ type Post = {
 	comments: PostComment[];
 };
 
-const PostList = () => {
+export const PostList: FC = () => {
 	const { theme } = useTheme();
-	const data: Post[] = useMemo(() => testDataPostWithComments, []);
+	const data: Post[] = testDataPostWithComments;
 
 	const [filterData, setfilterData] = useState(data);
 
@@ -38,21 +35,9 @@ const PostList = () => {
 			<div className={clsx("container", styles.post_list, theme === "dark" && styles.post_list__dark_theme)}>
 				<PostLengthFilter posts={data} onDataSend={handleDataFromFilter} />
 				{filterData.map((post: Post) => {
-					return (
-						<PostCard
-							key={post.id}
-							id={post.id}
-							title={post.title}
-							text={post.text}
-							date={formatDate(post.date)}
-							comments={post.comments}
-						/>
-					);
+					return <PostCard key={`postCard-${post.id}`} post={post} />;
 				})}
 			</div>
 		</div>
 	);
 };
-
-const PostListWithLoading = withLoading(PostList);
-export { PostListWithLoading as PostList };
