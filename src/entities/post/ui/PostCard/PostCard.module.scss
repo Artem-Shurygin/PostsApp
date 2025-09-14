@@ -16,7 +16,15 @@
 		}
 	}
 
+	&__footer {
+		position: relative;
+		display: flex;
+		justify-content: space-between;
+	}
+
 	&__date {
+		position: absolute;
+		right: 0;
 		display: flex;
 		justify-content: end;
 		color: rgb(179, 179, 179);

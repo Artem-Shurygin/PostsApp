@@ -1,0 +1,12 @@
+.album {
+  &__title {
+    display: flex;
+    justify-content: center;
+  }
+  &__photos_list{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 45px;
+  }
+}
