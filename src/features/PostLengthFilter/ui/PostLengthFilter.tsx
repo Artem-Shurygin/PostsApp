@@ -1,5 +1,6 @@
 import type { FC, ChangeEvent } from "react";
 import { filterPostsByLength } from "@/features/PostLengthFilter/lib/filterByLength.ts";
+import styles from "./PostLengthFilter.module.scss";
 
 type PostComment = {
 	id: number;
@@ -27,7 +28,7 @@ export const PostLengthFilter: FC<PostLengthFilterProps> = ({ posts, onDataSend 
 		onDataSend(filteredPosts);
 	};
 	return (
-		<select name="postsFilter" id="postsFilter" onChange={handleСhangeFilter}>
+		<select name="postsFilter" id="postsFilter" onChange={handleСhangeFilter} className={styles.posts_filter}>
 			<option value="unfiltered">Без фильтра</option>
 			<option value="longTitlePosts">Длинный заголовок поста</option>
 			<option value="shortTitlePosts">Короткий заголовок поста</option>

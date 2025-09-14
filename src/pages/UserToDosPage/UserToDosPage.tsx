@@ -2,18 +2,18 @@ import type { FC } from "react";
 import { useMemo } from "react";
 import { useParams } from "react-router-dom";
 import clsx from "clsx";
-import styles from "./UserToDosPage.module.scss"
+import styles from "./UserToDosPage.module.scss";
 import { useTheme } from "@/shared/lib/theme/useTheme";
 import { testDataUsers } from "@/shared/mocks/testDataUsers";
 
 export const UserToDosPage: FC = () => {
 	const { theme } = useTheme();
-	const { id: userId } = useParams();
+	const { userId } = useParams();
 
 	//Получение списка задач пользователя
-	const users = useMemo(() => testDataUsers, []);
-	const user = users.find((user) => user.id == Number(userId));
-	const userToDoList = useMemo(() => user?.toDoList, []);
+	const users = testDataUsers;
+	const currentUser = useMemo(() => users.find((user) => user.id == Number(userId)), []);
+	const userToDoList = currentUser?.toDoList;
 
 	return (
 		<div className={`theme_outer_wrapper__${theme}`}>

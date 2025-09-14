@@ -1,5 +1,5 @@
 import { testDataPostWithComments } from "@/shared/mocks/testDataPostWithComments";
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import { useTheme } from "@/shared/lib/theme/useTheme";
 
 type PostComment = {
@@ -18,7 +18,7 @@ type Post = {
 
 export const usePosts = () => {
 	const { theme } = useTheme();
-	const data: Post[] = useMemo(() => testDataPostWithComments, []);
+	const data: Post[] = testDataPostWithComments;
 	const [filteredData, setfilteredData] = useState(data);
 	const handleDataFromFilter = (data: Post[]) => {
 		setfilteredData(data);

@@ -9,17 +9,14 @@ import { testDataAlbums } from "@/shared/mocks/testDataAlbums";
 
 export const UserAlbumsPage: FC = () => {
 	const { theme } = useTheme();
-	const { id: userId } = useParams();
+	const { userId } = useParams();
 
 	//Получение альбомов пользователя
-	const users = useMemo(() => testDataUsers, []);
-	const albums = useMemo(() => testDataAlbums, []);
-	const user = users.find((user) => user.id == Number(userId));
-	const userAlbumsIds = user?.albumsIds;
-	const userAlbums = useMemo(
-		() => albums.filter((album) => userAlbumsIds?.includes(album.id) ?? false),
-		[userAlbumsIds]
-	);
+	const users = testDataUsers;
+	const albums = testDataAlbums;
+	const currentUser = useMemo(() => users.find((user) => user.id == Number(userId)), []);
+	const userAlbumsIds = currentUser?.albumsIds;
+	const userAlbums = useMemo(() => albums.filter((album) => userAlbumsIds?.includes(album.id)), [userAlbumsIds]);
 
 	return (
 		<div className={`theme_outer_wrapper__${theme}`}>

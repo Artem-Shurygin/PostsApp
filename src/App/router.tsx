@@ -19,16 +19,7 @@ export const router = createBrowserRouter([
 		element: <MainLayout />,
 		children: [
 			{ index: true, element: <PostsFeedPage /> },
-			{ path: "/posts/:id", element: <PostPage /> },
-		],
-	},
-
-	{
-		path: "/posts",
-		element: <MainLayout />,
-		children: [
-			{ index: true, element: <PostsFeedPage /> },
-			{ path: "/posts/:id", element: <PostPage /> },
+			{ path: "/posts/:postId", element: <PostPage /> },
 		],
 	},
 	{
@@ -36,9 +27,9 @@ export const router = createBrowserRouter([
 		element: <MainLayout />,
 		children: [
 			{ index: true, element: null },
-			{ path: `/users/:id/posts`, element: <UserPostsPage /> },
-			{ path: `/users/:id/albums`, element: <UserAlbumsPage /> },
-			{ path: `/users/:id/todos`, element: <UserToDosPage /> },
+			{ path: `/users/:userId/posts`, element: <UserPostsPage /> },
+			{ path: `/users/:userId/albums`, element: <UserAlbumsPage /> },
+			{ path: `/users/:userId/todos`, element: <UserToDosPage /> },
 		],
 	},
 	{
@@ -46,7 +37,7 @@ export const router = createBrowserRouter([
 		element: <MainLayout />,
 		children: [
 			{ index: true, element: null },
-			{ path: `/albums/:id/photos`, element: <AlbumPage /> },
+			{ path: `/albums/:albumId/photos`, element: <AlbumPage /> },
 		],
 	},
 ]);
