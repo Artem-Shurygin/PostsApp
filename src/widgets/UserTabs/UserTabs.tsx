@@ -1,6 +1,7 @@
 import type { FC } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styles from "./UserTabs.module.scss";
+import { useUser } from "@/shared/lib/user/useUser";
 
 type Tabs = {
 	id: number;
@@ -9,14 +10,14 @@ type Tabs = {
 };
 
 export const UserTabs: FC = () => {
-	let { userId } = useParams();
-	if (!userId) userId = "0";
+	const { user } = useUser();
+
 	const tabs: Tabs[] = [
 		{ id: 0, title: "Главная", link: "/" },
 		{ id: 1, title: "Лента", link: "/posts" },
-		{ id: 2, title: "Посты", link: `/users/${userId}/posts` },
-		{ id: 3, title: "Альбомы", link: `/users/${userId}/albums` },
-		{ id: 4, title: "Задачи", link: `/users/${userId}/todos` },
+		{ id: 2, title: "Посты", link: `/users/${user?.id}/posts` },
+		{ id: 3, title: "Альбомы", link: `/users/${user?.id}/albums` },
+		{ id: 4, title: "Задачи", link: `/users/${user?.id}/todos` },
 	];
 
 	return (

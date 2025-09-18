@@ -87,7 +87,7 @@ export const testDataUsers: User[] = [
 	},
 	{
 		id: 1,
-		userName: "ALex",
+		userName: "Alex",
 		postsIds: [6, 7, 8, 9, 10],
 		albumsIds: [4, 5, 6],
 		toDoList: [

@@ -1,24 +1,32 @@
 import type { FC } from "react";
-import { useMemo } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import clsx from "clsx";
 import styles from "./UserToDosPage.module.scss";
 import { useTheme } from "@/shared/lib/theme/useTheme";
-import { testDataUsers } from "@/shared/mocks/testDataUsers";
+import { useUser } from "@/shared/lib/user/useUser";
+
+type ToDoList = {
+	id: number;
+	task: string;
+	completed: boolean;
+	priority: string;
+	category: string;
+};
 
 export const UserToDosPage: FC = () => {
 	const { theme } = useTheme();
-	const { userId } = useParams();
+	const { user } = useUser();
+	const [userToDoList, setUserToDoList] = useState<ToDoList[]>([]);
 
 	//Получение списка задач пользователя
-	const users = testDataUsers;
-	const currentUser = useMemo(() => users.find((user) => user.id == Number(userId)), []);
-	const userToDoList = currentUser?.toDoList;
+	useEffect(() => {
+		if (user) setUserToDoList(user.toDoList);
+	}, [user]);
 
 	return (
 		<div className={`theme_outer_wrapper__${theme}`}>
 			<div className={clsx("container", `theme_inner_wrapper__${theme}`)}>
-				<h2 className={styles.user_todos__title}>Ваши задачи</h2>
+				<h2 className={styles.user_todos__title}>Задачи пользователя "{user?.userName}"</h2>
 				<ul className={styles.user_todos__list}>
 					{userToDoList?.map((task) => (
 						<li key={`toDo-${task.id}`}>{task.task}</li>

@@ -1,5 +1,4 @@
 import type { FC } from "react";
-import { useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { useTheme } from "@/shared/lib/theme/useTheme";
 import clsx from "clsx";
@@ -12,7 +11,7 @@ export const AlbumPage: FC = () => {
 
 	//Получение альбома
 	const albums = testDataAlbums;
-	const currentAlbum = useMemo(() => albums.find((albums) => albums.id == Number(albumId)), []);
+	const currentAlbum = albums.find((albums) => albums.id == Number(albumId));
 
 	return (
 		<div className={`theme_outer_wrapper__${theme}`}>

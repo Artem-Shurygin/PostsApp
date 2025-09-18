@@ -5,6 +5,7 @@ import { useTheme } from "@/shared/lib/theme/useTheme";
 import { Modal } from "@/shared/ui/Modal/Modal";
 import { ThemeSwitcher } from "@/features/ThemeSwitcher/ui/ThemeSwitcher";
 import { UserTabs } from "@/widgets/UserTabs/UserTabs";
+import { UserSelection } from "../UserSelection/UserSelection";
 
 export const Header = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
@@ -44,6 +45,7 @@ export const Header = () => {
 				</Modal>
 				<h1 className={styles.header__title}>Posts</h1>
 				<UserTabs />
+				<UserSelection />
 				<div className={styles.header__button_box}>
 					<button
 						className={clsx(styles.header__modal_btn, theme === "dark" && styles.header__modal_btn__dark_theme)}
