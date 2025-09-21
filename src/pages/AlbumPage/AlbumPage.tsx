@@ -1,11 +1,10 @@
-import type { FC } from "react";
 import { useParams } from "react-router-dom";
 import { useTheme } from "@/shared/lib/theme/useTheme";
 import clsx from "clsx";
 import styles from "./AlbumPage.module.scss";
 import { useGetPhotoByAlbumIdQuery } from "@/entities/[entity]/api/photosApi";
 
-export const AlbumPage: FC = () => {
+export const AlbumPage = () => {
 	const { theme } = useTheme();
 	const { albumId } = useParams();
 	const { data: photos } = useGetPhotoByAlbumIdQuery(Number(albumId));

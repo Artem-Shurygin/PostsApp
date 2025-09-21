@@ -1,16 +1,15 @@
-import type { FC } from "react";
 import clsx from "clsx";
 import { NavLink } from "react-router-dom";
 import { useTheme } from "@/shared/lib/theme/useTheme";
 import { CommentList } from "@/widgets/CommentList/ui/CommentList";
 import styles from "./PostCard.module.scss";
-import { type Post } from "@/entities/[entity]/api/postsApi";
+import type { Post } from "@/entities/[entity]/model/types";
 
 type PostCardProps = {
 	post: Post;
 };
 
-export const PostCard: FC<PostCardProps> = ({ post }) => {
+export const PostCard = ({ post }: PostCardProps) => {
 	const { theme } = useTheme();
 	return (
 		<div className={styles.post}>

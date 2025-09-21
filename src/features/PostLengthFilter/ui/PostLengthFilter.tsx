@@ -1,14 +1,14 @@
-import type { FC, ChangeEvent } from "react";
+import type { ChangeEvent } from "react";
 import { filterPostsByLength } from "@/features/PostLengthFilter/lib/filterByLength.ts";
 import styles from "./PostLengthFilter.module.scss";
-import { type Post } from "@/entities/[entity]/api/postsApi";
+import type { Post } from "@/entities/[entity]/model/types";
 
 type PostLengthFilterProps = {
 	posts: Post[];
 	onDataSend: (data: Post[]) => void;
 };
 
-export const PostLengthFilter: FC<PostLengthFilterProps> = ({ posts, onDataSend }) => {
+export const PostLengthFilter = ({ posts, onDataSend }: PostLengthFilterProps) => {
 	const handleСhangeFilter = (e: ChangeEvent<HTMLSelectElement>) => {
 		const filteredPosts: Post[] = filterPostsByLength(posts, e.target.value);
 		onDataSend(filteredPosts);

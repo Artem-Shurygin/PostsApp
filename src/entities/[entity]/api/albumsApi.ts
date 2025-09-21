@@ -1,10 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-
-export type Album = {
-	userId: number;
-	id: number;
-	title: string;
-};
+import type { Album } from "@/entities/[entity]/model/types";
 
 export const albumsApi = createApi({
 	reducerPath: "albumsApi",
@@ -17,7 +12,7 @@ export const albumsApi = createApi({
 		}),
 		getAlbumByUserId: builder.query<Album[], number>({
 			query: (userId) => `albums/?userId=${userId}`,
-			providesTags: ( userId) => [{ type: "Album", userId }],
+			providesTags: (userId) => [{ type: "Album", userId }],
 		}),
 	}),
 });

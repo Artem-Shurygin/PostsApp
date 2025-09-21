@@ -1,4 +1,4 @@
-import type { FC, ReactNode } from "react";
+import type { PropsWithChildren } from "react";
 import { createPortal } from "react-dom";
 import { usePortal } from "./usePortal";
 import styles from "./Modal.module.scss";
@@ -9,16 +9,15 @@ import { ModalFooter } from "@/shared/ui/Modal/Compound/ModalFooter/ModalFooter"
 type ModalProps = {
 	isOpen: boolean;
 	onClose: () => void;
-	children: ReactNode;
 };
 
 type ModalComponents = {
-	Header: FC<{ children: ReactNode }>;
-	Body: FC<{ children: ReactNode }>;
-	Footer: FC<{ children: ReactNode }>;
+	Header: PropsWithChildren;
+	Body: PropsWithChildren;
+	Footer: PropsWithChildren;
 };
 
-export const Modal: FC<ModalProps> & ModalComponents = ({ isOpen, onClose, children }) => {
+export const Modal = ({ isOpen, onClose, children }: PropsWithChildren<ModalProps> & ModalComponents) => {
 	const portalElement = usePortal("root");
 	const handleCloseButtonClick = () => onClose();
 

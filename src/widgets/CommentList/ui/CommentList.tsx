@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { FC } from "react";
+import type { MouseEventHandler } from "react";
 import clsx from "clsx";
 import { useTheme } from "@/shared/lib/theme/useTheme";
 import styles from "./CommentList.module.scss";
@@ -9,7 +9,7 @@ type CommentListProps = {
 	postId: number;
 };
 
-export const CommentList: FC<CommentListProps> = ({ postId }) => {
+export const CommentList = ({ postId }: CommentListProps) => {
 	const { theme } = useTheme();
 	const [isCommentsOpen, setIsCommentsOpen] = useState(false);
 
@@ -18,7 +18,7 @@ export const CommentList: FC<CommentListProps> = ({ postId }) => {
 		skip: !isCommentsOpen,
 	});
 
-	const handleClickCommentdBtn: React.MouseEventHandler<HTMLButtonElement> = () => {
+	const handleClickCommentdBtn: MouseEventHandler<HTMLButtonElement> = () => {
 		setIsCommentsOpen(!isCommentsOpen);
 	};
 

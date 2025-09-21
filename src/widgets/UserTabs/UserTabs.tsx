@@ -1,18 +1,17 @@
-import type { FC } from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./UserTabs.module.scss";
 import { useUser } from "@/shared/lib/user/useUser";
 
-type Tabs = {
+type Tab = {
 	id: number;
 	title: string;
 	link: string;
 };
 
-export const UserTabs: FC = () => {
+export const UserTabs = ({}: {}) => {
 	const { user } = useUser();
 
-	const tabs: Tabs[] = [
+	const tabs: Tab[] = [
 		{ id: 0, title: "Главная", link: "/" },
 		{ id: 1, title: "Лента", link: "/posts" },
 		{ id: 2, title: "Посты", link: `/users/${user?.id}/posts` },
