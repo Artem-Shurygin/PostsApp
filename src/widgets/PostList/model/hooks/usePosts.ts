@@ -1,31 +1,25 @@
-import { testDataPostWithComments } from "@/shared/mocks/testDataPostWithComments";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTheme } from "@/shared/lib/theme/useTheme";
-
-type PostComment = {
-	id: number;
-	author: string;
-	text: string;
-	date: string;
-};
-type Post = {
-	id: number;
-	title: string;
-	text: string;
-	date: string;
-	comments: PostComment[];
-};
+import { useGetPostsQuery, type Post } from "@/entities/[entity]/api/postsApi";
 
 export const usePosts = () => {
 	const { theme } = useTheme();
-	const data: Post[] = testDataPostWithComments;
-	const [filteredData, setfilteredData] = useState(data);
-	const handleDataFromFilter = (data: Post[]) => {
+	const { data, error, isLoading } = useGetPostsQuery();
+	const [filteredData, setfilteredData] = useState<Post[] | null>(null);
+
+	const handleDataFromFilter = (data: Post[] | null) => {
 		setfilteredData(data);
 	};
+
+	useEffect(() => {
+		if (data) setfilteredData(data);
+	}, [data]);
+
 	return {
 		theme,
 		data,
+		error,
+		isLoading,
 		filteredData,
 		handleDataFromFilter,
 	};

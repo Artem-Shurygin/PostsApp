@@ -1,21 +1,7 @@
 import type { FC, ChangeEvent } from "react";
 import { filterPostsByLength } from "@/features/PostLengthFilter/lib/filterByLength.ts";
 import styles from "./PostLengthFilter.module.scss";
-
-type PostComment = {
-	id: number;
-	author: string;
-	text: string;
-	date: string;
-};
-
-type Post = {
-	id: number;
-	title: string;
-	text: string;
-	date: string;
-	comments: PostComment[];
-};
+import { type Post } from "@/entities/[entity]/api/postsApi";
 
 type PostLengthFilterProps = {
 	posts: Post[];

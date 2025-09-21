@@ -1,25 +1,22 @@
-import React from "react";
 import { useState } from "react";
 import type { FC } from "react";
 import clsx from "clsx";
 import { useTheme } from "@/shared/lib/theme/useTheme";
-import { formatDate } from "@/utils/formatDate";
 import styles from "./CommentList.module.scss";
-
-type PostComment = {
-	id: number;
-	author: string;
-	text: string;
-	date: string;
-};
+import { useGetCommentsByPostIdQuery } from "@/entities/[entity]/api/commentsApi";
 
 type CommentListProps = {
-	comments: PostComment[];
+	postId: number;
 };
 
-export const CommentList: FC<CommentListProps> = ({ comments }) => {
+export const CommentList: FC<CommentListProps> = ({ postId }) => {
 	const { theme } = useTheme();
 	const [isCommentsOpen, setIsCommentsOpen] = useState(false);
+
+	const { data } = useGetCommentsByPostIdQuery(postId, {
+		//не подгружает данные комментариев, пока они не расскрыты
+		skip: !isCommentsOpen,
+	});
 
 	const handleClickCommentdBtn: React.MouseEventHandler<HTMLButtonElement> = () => {
 		setIsCommentsOpen(!isCommentsOpen);
@@ -32,22 +29,24 @@ export const CommentList: FC<CommentListProps> = ({ comments }) => {
 			</button>
 			{isCommentsOpen && (
 				<div className={styles.comment_list__coomments_box}>
-					{comments.map((comment) => (
-						<div key={`comment-${comment.id}`} className={styles.comment_list__comment}>
-							<p
-								className={clsx(
-									styles.comment_list__author,
-									theme === "dark" && styles.comment_list__author__dark_theme
-								)}
-							>
-								{comment.author}
-							</p>
-							<p className={clsx(styles.comment_list__text, theme === "dark" && styles.comment_list__text__dark_theme)}>
-								{comment.text}
-							</p>
-							<p className={styles.comment_list__date}>{formatDate(comment.date)}</p>
-						</div>
-					))}
+					{data &&
+						data.map((comment) => (
+							<div key={`comment-${comment.id}`} className={styles.comment_list__comment}>
+								<p
+									className={clsx(
+										styles.comment_list__author,
+										theme === "dark" && styles.comment_list__author__dark_theme
+									)}
+								>
+									{comment.name}
+								</p>
+								<p
+									className={clsx(styles.comment_list__text, theme === "dark" && styles.comment_list__text__dark_theme)}
+								>
+									{comment.body}
+								</p>
+							</div>
+						))}
 				</div>
 			)}
 		</div>
