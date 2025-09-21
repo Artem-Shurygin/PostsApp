@@ -3,7 +3,7 @@ import { PostCard } from "@/entities/post/ui/PostCard/PostCard";
 import { PostLengthFilter } from "@/features/PostLengthFilter/ui/PostLengthFilter";
 import styles from "./PostList.module.scss";
 import { usePosts } from "./model/hooks/usePosts";
-import { type Post } from "@/entities/[entity]/api/postsApi";
+import type { Post } from "@/entities/[entity]/model/types";
 
 export const PostList = () => {
 	const { theme, data, filteredData, handleDataFromFilter } = usePosts();

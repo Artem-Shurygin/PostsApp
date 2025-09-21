@@ -1,11 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-
-export type ToDo = {
-	userId: number;
-	id: number;
-	title: string;
-	completed: boolean;
-};
+import type { ToDo } from "@/entities/[entity]/model/types";
 
 export const toDosApi = createApi({
 	reducerPath: "toDosApi",

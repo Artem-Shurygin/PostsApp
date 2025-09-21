@@ -1,11 +1,11 @@
-import type { FC } from "react";
 import clsx from "clsx";
 import styles from "./UserToDosPage.module.scss";
 import { useTheme } from "@/shared/lib/theme/useTheme";
 import { useUser } from "@/shared/lib/user/useUser";
-import { useGetToDosByUserIdQuery, type ToDo } from "@/entities/[entity]/api/todosApi";
+import { useGetToDosByUserIdQuery } from "@/entities/[entity]/api/toDosApi";
+import type { ToDo } from "@/entities/[entity]/model/types";
 
-export const UserToDosPage: FC = () => {
+export const UserToDosPage = ({}: {}) => {
 	const { theme } = useTheme();
 	const { user } = useUser();
 	const { data: toDos } = useGetToDosByUserIdQuery(Number(user?.id));

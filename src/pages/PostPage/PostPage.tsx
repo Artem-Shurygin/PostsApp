@@ -1,11 +1,10 @@
 import { useTheme } from "@/shared/lib/theme/useTheme";
 import clsx from "clsx";
-import type { FC } from "react";
 import { useParams } from "react-router-dom";
 import { PostCard } from "@/entities/post/ui/PostCard/PostCard";
 import { useGetPostByIdQuery } from "@/entities/[entity]/api/postsApi";
 
-export const PostPage: FC = () => {
+export const PostPage = ({}: {}) => {
 	const { theme } = useTheme();
 	const { postId } = useParams();
 	const { data: post, isLoading } = useGetPostByIdQuery(Number(postId));

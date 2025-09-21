@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { postsApi } from "@/entities/[entity]/api/postsApi";
 import { commentsApi } from "@/entities/[entity]/api/commentsApi";
-import { toDosApi } from "@/entities/[entity]/api/todosApi";
+import { toDosApi } from "@/entities/[entity]/api/toDosApi";
 import { usersApi } from "@/entities/[entity]/api/usersApi";
 import { albumsApi } from "@/entities/[entity]/api/albumsApi";
 import { photosApi } from "@/entities/[entity]/api/photosApi";

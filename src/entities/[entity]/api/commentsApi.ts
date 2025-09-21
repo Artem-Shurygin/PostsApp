@@ -1,12 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-
-export type Comment = {
-	postId: number;
-	id: number;
-	name: string;
-	email: string;
-	body: string;
-};
+import type { Comment } from "@/entities/[entity]/model/types";
 
 export const commentsApi = createApi({
 	reducerPath: "commentsApi",

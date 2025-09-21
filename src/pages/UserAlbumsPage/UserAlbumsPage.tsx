@@ -1,12 +1,12 @@
-import type { FC } from "react";
 import { NavLink } from "react-router-dom";
 import clsx from "clsx";
 import styles from "./UserAlbumsPage.module.scss";
 import { useTheme } from "@/shared/lib/theme/useTheme";
 import { useUser } from "@/shared/lib/user/useUser";
-import { useGetAlbumByUserIdQuery, type Album } from "@/entities/[entity]/api/albumsApi";
+import { useGetAlbumByUserIdQuery } from "@/entities/[entity]/api/albumsApi";
+import type { Album } from "@/entities/[entity]/model/types";
 
-export const UserAlbumsPage: FC = () => {
+export const UserAlbumsPage = ({}: {}) => {
 	const { user } = useUser();
 	const { theme } = useTheme();
 	const { data: albums } = useGetAlbumByUserIdQuery(Number(user?.id));

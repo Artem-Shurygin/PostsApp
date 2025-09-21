@@ -1,10 +1,6 @@
-import type { FC, ReactNode } from "react";
+import type { PropsWithChildren } from "react";
 import styles from "./ModalBody.module.scss";
 
-type ModalBodyProps = {
-	children: ReactNode;
-};
-
-export const ModalBody: FC<ModalBodyProps> = ({ children }) => {
+export const ModalBody = ({ children }: PropsWithChildren) => {
 	return <div className={styles.modal_body}>{children}</div>;
 };

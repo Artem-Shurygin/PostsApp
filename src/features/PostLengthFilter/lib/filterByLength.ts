@@ -1,4 +1,4 @@
-import { type Post } from "@/entities/[entity]/api/postsApi";
+import type { Post } from "@/entities/[entity]/model/types";
 
 export const filterPostsByLength = (filteredData: Post[], filterValue: string): Post[] => {
 	switch (filterValue) {
