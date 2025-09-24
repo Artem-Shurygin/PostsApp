@@ -1,17 +1,16 @@
 import type { FC } from "react";
 import { useParams } from "react-router-dom";
-import { useTheme } from "@/shared/lib/theme/useTheme";
-import clsx from "clsx";
 import styles from "./AlbumPage.module.scss";
 import { useGetPhotoByAlbumIdQuery } from "@/entities/[entity]/api/photosApi";
+import { AsyncWrapper } from "@/widgets/AsyncWrapper/AsyncWrapper";
+import { ThemeWrapper } from "@/widgets/ThemeWrapper/ThemeWrapper";
 
 export const AlbumPage: FC = () => {
-	const { theme } = useTheme();
 	const { albumId } = useParams();
-	const { data: photos } = useGetPhotoByAlbumIdQuery(Number(albumId));
+	const { data: photos, isLoading, error } = useGetPhotoByAlbumIdQuery(Number(albumId));
 	return (
-		<div className={`theme_outer_wrapper__${theme}`}>
-			<div className={clsx("container", `theme_inner_wrapper__${theme}`)}>
+		<ThemeWrapper>
+			<AsyncWrapper isLoading={isLoading} error={error}>
 				{photos && (
 					<div className={styles.album__photos_list}>
 						{photos.map((photo, index) => (
@@ -19,7 +18,7 @@ export const AlbumPage: FC = () => {
 						))}
 					</div>
 				)}
-			</div>
-		</div>
+			</AsyncWrapper>
+		</ThemeWrapper>
 	);
 };
