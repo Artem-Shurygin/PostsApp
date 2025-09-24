@@ -1,19 +1,18 @@
 import type { FC } from "react";
 import { NavLink } from "react-router-dom";
-import clsx from "clsx";
 import styles from "./UserAlbumsPage.module.scss";
-import { useTheme } from "@/shared/lib/theme/useTheme";
 import { useUser } from "@/shared/lib/user/useUser";
 import { useGetAlbumByUserIdQuery, type Album } from "@/entities/[entity]/api/albumsApi";
+import { AsyncWrapper } from "@/widgets/AsyncWrapper/AsyncWrapper";
+import { ThemeWrapper } from "@/widgets/ThemeWrapper/ThemeWrapper";
 
 export const UserAlbumsPage: FC = () => {
 	const { user } = useUser();
-	const { theme } = useTheme();
-	const { data: albums } = useGetAlbumByUserIdQuery(Number(user?.id));
+	const { data: albums, isLoading, error } = useGetAlbumByUserIdQuery(Number(user?.id));
 
 	return (
-		<div className={`theme_outer_wrapper__${theme}`}>
-			<div className={clsx("container", `theme_inner_wrapper__${theme}`, styles.albums)}>
+		<ThemeWrapper innerStyles={[styles.albums]}>
+			<AsyncWrapper isLoading={isLoading} error={error}>
 				<h2 className={styles.albums__title}>Альбомы пользователя "{user?.username}"</h2>
 				<div className={styles.albums__list}>
 					{albums?.map((album: Album) => (
@@ -22,7 +21,7 @@ export const UserAlbumsPage: FC = () => {
 						</NavLink>
 					))}
 				</div>
-			</div>
-		</div>
+			</AsyncWrapper>
+		</ThemeWrapper>
 	);
 };

@@ -1,6 +1,6 @@
 import type { FC } from "react";
-import { PostListWithLoading } from "@/widgets/PostList/PostListWithLoading";
+import { PostList } from "@/widgets/PostList/PostList";
 
 export const PostsFeedPage: FC = () => {
-	return <PostListWithLoading />;
+	return <PostList />;
 };

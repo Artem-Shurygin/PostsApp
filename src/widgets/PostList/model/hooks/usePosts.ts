@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useTheme } from "@/shared/lib/theme/useTheme";
 import { useGetPostsQuery, type Post } from "@/entities/[entity]/api/postsApi";
 
@@ -10,10 +10,6 @@ export const usePosts = () => {
 	const handleDataFromFilter = (data: Post[] | null) => {
 		setfilteredData(data);
 	};
-
-	useEffect(() => {
-		if (data) setfilteredData(data);
-	}, [data]);
 
 	return {
 		theme,
