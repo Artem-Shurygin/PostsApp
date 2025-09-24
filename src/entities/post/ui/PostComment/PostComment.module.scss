@@ -1,0 +1,20 @@
+.comment_list {
+	&__comment {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		padding: 10px 0;
+		border-bottom: 1px solid rgb(179, 179, 179);
+		&:last-child {
+			border-bottom: none;
+		}
+	}
+
+	&__author {
+		font-weight: bold;
+	}
+
+	&__text {
+		text-align: justify;
+	}
+}

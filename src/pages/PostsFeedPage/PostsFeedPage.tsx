@@ -1,5 +1,5 @@
-import { PostListWithLoading } from "@/widgets/PostList/PostListWithLoading";
+import { PostList } from "@/widgets/PostList/PostList";
 
 export const PostsFeedPage = ({}: {}) => {
-	return <PostListWithLoading />;
+	return <PostList />;
 };

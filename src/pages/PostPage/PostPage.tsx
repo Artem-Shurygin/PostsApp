@@ -1,20 +1,18 @@
-import { useTheme } from "@/shared/lib/theme/useTheme";
-import clsx from "clsx";
 import { useParams } from "react-router-dom";
 import { PostCard } from "@/entities/post/ui/PostCard/PostCard";
 import { useGetPostByIdQuery } from "@/entities/[entity]/api/postsApi";
+import { AsyncWrapper } from "@/widgets/AsyncWrapper/AsyncWrapper";
+import { ThemeWrapper } from "@/widgets/ThemeWrapper/ThemeWrapper";
 
 export const PostPage = ({}: {}) => {
-	const { theme } = useTheme();
 	const { postId } = useParams();
-	const { data: post, isLoading } = useGetPostByIdQuery(Number(postId));
+	const { data: post, isLoading, error } = useGetPostByIdQuery(Number(postId));
 
 	return (
-		<div className={`theme_outer_wrapper__${theme}`}>
-			<div className={clsx("container", `theme_inner_wrapper__${theme}`)}>
+		<ThemeWrapper>
+			<AsyncWrapper isLoading={isLoading} error={error}>
 				{post && <PostCard post={post} />}
-				{!post && !isLoading && <p>Данный пост отсутствует</p>}
-			</div>
-		</div>
+			</AsyncWrapper>
+		</ThemeWrapper>
 	);
 };

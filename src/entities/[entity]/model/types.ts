@@ -1,5 +1,3 @@
-// import type { Comment } from "@/entities/[entity]/model/types";
-
 export type User = {
 	id: number;
 	name: string;

@@ -1,17 +1,6 @@
-.wrapper {
-	background-color: white;
-	&__dark_theme {
-		background-color: #141414;
-	}
-}
-
 .post_list {
 	display: flex;
 	flex-direction: column;
 	gap: 45px;
-	min-height: 100vh;
 	padding: 30px;
-	&__dark_theme {
-		background-color: #222222;
-	}
 }
