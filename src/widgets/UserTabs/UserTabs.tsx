@@ -8,7 +8,7 @@ type Tab = {
 	link: string;
 };
 
-export const UserTabs = ({}: {}) => {
+export const UserTabs = () => {
 	const { user } = useUser();
 
 	const tabs: Tab[] = [

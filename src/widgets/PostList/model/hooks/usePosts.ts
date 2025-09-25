@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useTheme } from "@/shared/lib/theme/useTheme";
-import { useGetPostsQuery } from "@/entities/[entity]/api/postsApi";
-import type { Post } from "@/entities/[entity]/model/types";
+import { useGetPostsQuery } from "@/entities/posts/api/postsApi";
+import type { Post } from "@/entities/posts/model/types";
 
 export const usePosts = () => {
 	const { theme } = useTheme();

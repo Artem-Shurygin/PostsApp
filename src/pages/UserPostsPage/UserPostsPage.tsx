@@ -1,12 +1,12 @@
 import styles from "./UserPostsPage.module.scss";
 import { PostCard } from "@/entities/post/ui/PostCard/PostCard";
 import { useUser } from "@/shared/lib/user/useUser";
-import { useGetPostByUserIdQuery } from "@/entities/[entity]/api/postsApi";
-import type { Post } from "@/entities/[entity]/model/types";
+import { useGetPostByUserIdQuery } from "@/entities/posts/api/postsApi";
+import type { Post } from "@/entities/posts/model/types";
 import { AsyncWrapper } from "@/widgets/AsyncWrapper/AsyncWrapper";
 import { ThemeWrapper } from "@/widgets/ThemeWrapper/ThemeWrapper";
 
-export const UserPostsPage = ({}: {}) => {
+export const UserPostsPage = () => {
 	const { user } = useUser();
 	const { data: posts, isLoading, error } = useGetPostByUserIdQuery(Number(user?.id));
 	return (

@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
 import { PostCard } from "@/entities/post/ui/PostCard/PostCard";
-import { useGetPostByIdQuery } from "@/entities/[entity]/api/postsApi";
+import { useGetPostByIdQuery } from "@/entities/posts/api/postsApi";
 import { AsyncWrapper } from "@/widgets/AsyncWrapper/AsyncWrapper";
 import { ThemeWrapper } from "@/widgets/ThemeWrapper/ThemeWrapper";
 
-export const PostPage = ({}: {}) => {
+export const PostPage = () => {
 	const { postId } = useParams();
 	const { data: post, isLoading, error } = useGetPostByIdQuery(Number(postId));
 

@@ -1,7 +1,7 @@
 import type { ChangeEvent } from "react";
 import { filterPostsByLength } from "@/features/PostLengthFilter/lib/filterByLength.ts";
 import styles from "./PostLengthFilter.module.scss";
-import type { Post } from "@/entities/[entity]/model/types";
+import type { Post } from "@/entities/posts/model/types";
 
 type PostLengthFilterProps = {
 	posts: Post[];

@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import type { Album } from "@/entities/[entity]/model/types";
+import type { Album } from "@/entities/album/model/types";
 
 export const albumsApi = createApi({
 	reducerPath: "albumsApi",

@@ -14,10 +14,9 @@ type ItemListProps<T extends Item> = {
 export const ItemList = <T extends Item>({ title, items, children }: ItemListProps<T>) => {
 	return (
 		<div className={styles.item_list}>
-			<h3 className={styles.item_list__title}>{title}</h3>
+			<h2 className={styles.item_list__title}>{title}</h2>
 			{items.map((item) => (
 				<div className={styles.item_list__item} key={item.id}>
-					<p className={styles.item_list__item_title}>{item.title}</p>
 					{children(item)}
 				</div>
 			))}

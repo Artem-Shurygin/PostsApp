@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { postsApi } from "@/entities/[entity]/api/postsApi";
-import { commentsApi } from "@/entities/[entity]/api/commentsApi";
-import { toDosApi } from "@/entities/[entity]/api/toDosApi";
-import { usersApi } from "@/entities/[entity]/api/usersApi";
-import { albumsApi } from "@/entities/[entity]/api/albumsApi";
-import { photosApi } from "@/entities/[entity]/api/photosApi";
+import { postsApi } from "@/entities/posts/api/postsApi";
+import { commentsApi } from "@/entities/comments/api/commentsApi";
+import { toDosApi } from "@/entities/toDos/api/toDosApi";
+import { usersApi } from "@/entities/users/api/usersApi";
+import { albumsApi } from "@/entities/album/api/albumsApi";
+import { photosApi } from "@/entities/photos/api/photosApi";
 
 export const store = configureStore({
 	reducer: {

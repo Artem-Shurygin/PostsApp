@@ -1,7 +1,7 @@
 import type { PropsWithChildren } from "react";
 import { useState } from "react";
 import { UserContext } from "@/shared/lib/user/UserContext";
-import type { User } from "@/entities/[entity]/model/types";
+import type { User } from "@/entities/users/model/types";
 
 export const UserProvider = ({ children }: PropsWithChildren) => {
 	const [user, setUser] = useState<User | null>(null);
