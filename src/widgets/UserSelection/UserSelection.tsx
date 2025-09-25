@@ -3,7 +3,7 @@ import type { ChangeEvent } from "react";
 import { useUser } from "@/shared/lib/user/useUser";
 import styles from "./UserSelection.module.scss";
 import { useNavigate } from "react-router-dom";
-import { useGetUsersQuery } from "@/entities/[entity]/api/usersApi";
+import { useGetUsersQuery } from "@/entities/users/api/usersApi";
 
 export const UserSelection = () => {
 	const { setUser } = useUser();

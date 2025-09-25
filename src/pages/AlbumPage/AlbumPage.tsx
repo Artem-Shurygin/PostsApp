@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./AlbumPage.module.scss";
-import { useGetPhotoByAlbumIdQuery } from "@/entities/[entity]/api/photosApi";
+import { useGetPhotoByAlbumIdQuery } from "@/entities/photos/api/photosApi";
 import { AsyncWrapper } from "@/widgets/AsyncWrapper/AsyncWrapper";
 import { ThemeWrapper } from "@/widgets/ThemeWrapper/ThemeWrapper";
 

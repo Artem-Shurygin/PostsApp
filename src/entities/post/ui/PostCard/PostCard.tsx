@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { useTheme } from "@/shared/lib/theme/useTheme";
 import { CommentList } from "@/widgets/CommentList/ui/CommentList";
 import styles from "./PostCard.module.scss";
-import { type Post } from "@/entities/[entity]/api/postsApi";
+import { type Post } from "@/entities/posts/api/postsApi";
 
 type PostCardProps = {
 	post: Post;

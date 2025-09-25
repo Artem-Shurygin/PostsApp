@@ -2,7 +2,7 @@ import type { FC } from "react";
 import styles from "./UserPostsPage.module.scss";
 import { PostCard } from "@/entities/post/ui/PostCard/PostCard";
 import { useUser } from "@/shared/lib/user/useUser";
-import { useGetPostByUserIdQuery, type Post } from "@/entities/[entity]/api/postsApi";
+import { useGetPostByUserIdQuery, type Post } from "@/entities/posts/api/postsApi";
 import { AsyncWrapper } from "@/widgets/AsyncWrapper/AsyncWrapper";
 import { ThemeWrapper } from "@/widgets/ThemeWrapper/ThemeWrapper";
 

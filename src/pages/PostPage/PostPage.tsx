@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import { useParams } from "react-router-dom";
 import { PostCard } from "@/entities/post/ui/PostCard/PostCard";
-import { useGetPostByIdQuery } from "@/entities/[entity]/api/postsApi";
+import { useGetPostByIdQuery } from "@/entities/posts/api/postsApi";
 import { AsyncWrapper } from "@/widgets/AsyncWrapper/AsyncWrapper";
 import { ThemeWrapper } from "@/widgets/ThemeWrapper/ThemeWrapper";
 

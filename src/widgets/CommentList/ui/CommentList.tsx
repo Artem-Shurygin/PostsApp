@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { FC } from "react";
 import styles from "./CommentList.module.scss";
-import { useGetCommentsByPostIdQuery } from "@/entities/[entity]/api/commentsApi";
+import { useGetCommentsByPostIdQuery } from "@/entities/comments/api/commentsApi";
 import { AsyncWrapper } from "@/widgets/AsyncWrapper/AsyncWrapper";
 import { PostComment } from "@/entities/post/ui/PostComment/PostComment";
 

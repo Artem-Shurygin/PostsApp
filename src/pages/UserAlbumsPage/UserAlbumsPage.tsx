@@ -2,7 +2,7 @@ import type { FC } from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./UserAlbumsPage.module.scss";
 import { useUser } from "@/shared/lib/user/useUser";
-import { useGetAlbumByUserIdQuery, type Album } from "@/entities/[entity]/api/albumsApi";
+import { useGetAlbumByUserIdQuery, type Album } from "@/entities/albums/api/albumsApi";
 import { AsyncWrapper } from "@/widgets/AsyncWrapper/AsyncWrapper";
 import { ThemeWrapper } from "@/widgets/ThemeWrapper/ThemeWrapper";
 

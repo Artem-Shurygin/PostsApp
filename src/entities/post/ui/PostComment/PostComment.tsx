@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import styles from "./PostComment.module.scss";
-import type { Comment } from "@/entities/[entity]/api/commentsApi";
+import type { Comment } from "@/entities/comments/api/commentsApi";
 
 type PostCommentProps = {
 	comment: Comment;

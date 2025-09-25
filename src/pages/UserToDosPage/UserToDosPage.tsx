@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import styles from "./UserToDosPage.module.scss";
 import { useUser } from "@/shared/lib/user/useUser";
-import { useGetToDosByUserIdQuery, type ToDo } from "@/entities/[entity]/api/toDosApi";
+import { useGetToDosByUserIdQuery, type ToDo } from "@/entities/toDos/api/toDosApi";
 import { AsyncWrapper } from "@/widgets/AsyncWrapper/AsyncWrapper";
 import { ThemeWrapper } from "@/widgets/ThemeWrapper/ThemeWrapper";
 
