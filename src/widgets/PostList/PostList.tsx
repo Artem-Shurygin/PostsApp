@@ -2,13 +2,12 @@ import { PostCard } from "@/entities/post/ui/PostCard/PostCard";
 import { PostLengthFilter } from "@/features/PostLengthFilter/ui/PostLengthFilter";
 import styles from "./PostList.module.scss";
 import { usePosts } from "./model/hooks/usePosts";
-import { type Post } from "@/entities/posts/api/postsApi";
+import type { Post } from "@/entities/posts/api/postsApi";
 import { AsyncWrapper } from "@/widgets/AsyncWrapper/AsyncWrapper";
 import { ThemeWrapper } from "@/widgets/ThemeWrapper/ThemeWrapper";
 
 export const PostList = () => {
 	const { data, storedPosts, isLoading, error, filteredData, handleDataFromFilter } = usePosts();
-
 	const posts = data || storedPosts;
 	return (
 		<ThemeWrapper innerStyles={[styles.post_list]}>

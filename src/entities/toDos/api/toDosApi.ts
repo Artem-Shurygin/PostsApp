@@ -16,6 +16,15 @@ export const toDosApi = createApi({
 			query: (userId) => `todos/?userId=${userId}`,
 			providesTags: (userId) => [{ type: "ToDo", userId }],
 		}),
+
+		updateToDo: builder.mutation<ToDo, Partial<ToDo>>({
+			query: ({ id, ...patch }) => ({
+				url: `todos/${id}`,
+				method: "PATCH",
+				body: patch,
+			}),
+			invalidatesTags: (result, error, { id }) => [{ type: "ToDo", id }],
+		}),
 	}),
 });
 

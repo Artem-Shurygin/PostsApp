@@ -15,7 +15,16 @@ export const commentsApi = createApi({
 	endpoints: (builder) => ({
 		getCommentsByPostId: builder.query<Comment[], number>({
 			query: (postId) => `comments/?postId=${postId}`,
-			providesTags: ( postId) => [{ type: "Comment", postId }],
+			providesTags: (postId) => [{ type: "Comment", postId }],
+		}),
+
+		createComment: builder.mutation<Comment, Partial<Comment>>({
+			query: (newComment) => ({
+				url: "comments",
+				method: "POST",
+				body: newComment,
+			}),
+			invalidatesTags: ["Comment"],
 		}),
 	}),
 });
