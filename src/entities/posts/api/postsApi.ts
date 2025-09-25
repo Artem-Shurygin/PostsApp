@@ -18,6 +18,35 @@ export const postsApi = createApi({
 			query: (UserId) => `posts/?userId=${UserId}`,
 			providesTags: (UserId) => [{ type: "Post", UserId }],
 		}),
+
+		createPost: builder.mutation<Post, Partial<Post>>({
+			query: (newPost) => ({
+				url: "posts",
+				method: "POST",
+				body: newPost,
+			}),
+			invalidatesTags: [{ type: "Post", id: "LIST" }],
+		}),
+
+		updatePost: builder.mutation<Post, Partial<Post>>({
+			query: ({ id, ...patch }) => ({
+				url: `posts/${id}`,
+				method: "PUT",
+				body: patch,
+			}),
+			invalidatesTags: (result, error, { id }) => [{ type: "Post", id }],
+		}),
+
+		deletePost: builder.mutation<void, number>({
+			query: (id) => ({
+				url: `posts/${id}`,
+				method: "DELETE",
+			}),
+			invalidatesTags: (result, error, id) => [
+				{ type: "Post", id },
+				{ type: "Post", id: "LIST" },
+			],
+		}),
 	}),
 });
 
