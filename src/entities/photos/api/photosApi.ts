@@ -11,10 +11,42 @@ export const photosApi = createApi({
 			providesTags: ["Photo"],
 		}),
 		getPhotoByAlbumId: builder.query<Photo[], number>({
-			query: (albumId) => `photos/?albumId=${albumId}`,
-			providesTags: (albumId) => [{ type: "Photo", albumId }],
+			query: (id) => `photos/?albumId=${id}`,
+			providesTags: (result, error, id) => [{ type: "Photo", id }],
+		}),
+
+		createPhoto: builder.mutation<Photo, Partial<Photo>>({
+			query: (newPhoto) => ({
+				url: "photos",
+				method: "POST",
+				body: newPhoto,
+			}),
+			invalidatesTags: ["Photo"],
+		}),
+
+		updatePhoto: builder.mutation<Photo, Partial<Photo>>({
+			query: ({ id, ...patch }) => ({
+				url: `photos/${id}`,
+				method: "PUT",
+				body: patch,
+			}),
+			invalidatesTags: (result, error, { id }) => [{ type: "Photo", id }],
+		}),
+
+		deletePhoto: builder.mutation<void, number>({
+			query: (id) => ({
+				url: `photos/${id}`,
+				method: "DELETE",
+			}),
+			invalidatesTags: (result, error, id) => [{ type: "Photo", id }],
 		}),
 	}),
 });
 
-export const { useGetPhotosQuery, useGetPhotoByAlbumIdQuery } = photosApi;
+export const {
+	useGetPhotosQuery,
+	useGetPhotoByAlbumIdQuery,
+	useCreatePhotoMutation,
+	useUpdatePhotoMutation,
+	useDeletePhotoMutation,
+} = photosApi;
