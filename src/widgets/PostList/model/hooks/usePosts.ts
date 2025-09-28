@@ -1,31 +1,24 @@
-import { testDataPostWithComments } from "@/shared/mocks/testDataPostWithComments";
 import { useState } from "react";
 import { useTheme } from "@/shared/lib/theme/useTheme";
-
-type PostComment = {
-	id: number;
-	author: string;
-	text: string;
-	date: string;
-};
-type Post = {
-	id: number;
-	title: string;
-	text: string;
-	date: string;
-	comments: PostComment[];
-};
+import { useGetPostsQuery, type Post } from "@/entities/posts/api/postsApi";
+import { selectAllPosts } from "@/entities/posts/model/slice/postsSelectors";
+import { useSelector } from "react-redux";
 
 export const usePosts = () => {
 	const { theme } = useTheme();
-	const data: Post[] = testDataPostWithComments;
-	const [filteredData, setfilteredData] = useState(data);
-	const handleDataFromFilter = (data: Post[]) => {
+	const { data, error, isLoading } = useGetPostsQuery();
+	const [filteredData, setfilteredData] = useState<Post[] | null>(null);
+	const storedPosts = useSelector(selectAllPosts);
+	const handleDataFromFilter = (data: Post[] | null) => {
 		setfilteredData(data);
 	};
+
 	return {
 		theme,
 		data,
+		storedPosts,
+		error,
+		isLoading,
 		filteredData,
 		handleDataFromFilter,
 	};

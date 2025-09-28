@@ -1,25 +1,21 @@
-import React from "react";
 import { useState } from "react";
 import type { FC } from "react";
-import clsx from "clsx";
-import { useTheme } from "@/shared/lib/theme/useTheme";
-import { formatDate } from "@/utils/formatDate";
 import styles from "./CommentList.module.scss";
-
-type PostComment = {
-	id: number;
-	author: string;
-	text: string;
-	date: string;
-};
+import { useGetCommentsByPostIdQuery } from "@/entities/comments/api/commentsApi";
+import { AsyncWrapper } from "@/widgets/AsyncWrapper/AsyncWrapper";
+import { PostComment } from "@/entities/posts/ui/PostComment/PostComment";
 
 type CommentListProps = {
-	comments: PostComment[];
+	postId: number;
 };
 
-export const CommentList: FC<CommentListProps> = ({ comments }) => {
-	const { theme } = useTheme();
+export const CommentList: FC<CommentListProps> = ({ postId }) => {
 	const [isCommentsOpen, setIsCommentsOpen] = useState(false);
+
+	const { data, isLoading, error } = useGetCommentsByPostIdQuery(postId, {
+		//не подгружает данные комментариев, пока они не расскрыты
+		skip: !isCommentsOpen,
+	});
 
 	const handleClickCommentdBtn: React.MouseEventHandler<HTMLButtonElement> = () => {
 		setIsCommentsOpen(!isCommentsOpen);
@@ -32,22 +28,9 @@ export const CommentList: FC<CommentListProps> = ({ comments }) => {
 			</button>
 			{isCommentsOpen && (
 				<div className={styles.comment_list__coomments_box}>
-					{comments.map((comment) => (
-						<div key={`comment-${comment.id}`} className={styles.comment_list__comment}>
-							<p
-								className={clsx(
-									styles.comment_list__author,
-									theme === "dark" && styles.comment_list__author__dark_theme
-								)}
-							>
-								{comment.author}
-							</p>
-							<p className={clsx(styles.comment_list__text, theme === "dark" && styles.comment_list__text__dark_theme)}>
-								{comment.text}
-							</p>
-							<p className={styles.comment_list__date}>{formatDate(comment.date)}</p>
-						</div>
-					))}
+					<AsyncWrapper isLoading={isLoading} error={error}>
+						{data && data.map((comment) => <PostComment key={`comment-${comment.id}`} comment={comment} />)}
+					</AsyncWrapper>
 				</div>
 			)}
 		</div>

@@ -1,21 +1,21 @@
 import { useEffect } from "react";
 import type { ChangeEvent } from "react";
 import { useUser } from "@/shared/lib/user/useUser";
-import { testDataUsers } from "@/shared/mocks/testDataUsers";
 import styles from "./UserSelection.module.scss";
 import { useNavigate } from "react-router-dom";
+import { useGetUsersQuery } from "@/entities/users/api/usersApi";
 
 export const UserSelection = () => {
 	const { setUser } = useUser();
-	const users = testDataUsers;
+	const { data: users } = useGetUsersQuery();
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		setUser(users[0]);
-	}, []);
+		if(users) setUser(users[0]);
+	}, [users]);
 
 	const handleChangeUser = (e: ChangeEvent<HTMLSelectElement>) => {
-		const currentUser = users.find((user) => user.id === Number(e.target.value));
+		const currentUser = users?.find((user) => user.id === Number(e.target.value));
 		if (currentUser) {
 			setUser(currentUser);
 			//изменение url
@@ -28,9 +28,9 @@ export const UserSelection = () => {
 	};
 	return (
 		<select name="userSelection" id="userSelection" onChange={handleChangeUser} className={styles.userSelection}>
-			{users.map((user) => (
+			{users?.map((user) => (
 				<option value={user.id} key={`userSelection-${user.id}`}>
-					{user.userName}
+					{user.username}
 				</option>
 			))}
 		</select>

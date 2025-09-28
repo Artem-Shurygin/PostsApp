@@ -1,17 +1,4 @@
-type PostComment = {
-	id: number;
-	author: string;
-	text: string;
-	date: string;
-};
-
-type Post = {
-	id: number;
-	title: string;
-	text: string;
-	date: string;
-	comments: PostComment[];
-};
+import { type Post } from "@/entities/posts/api/postsApi";
 
 export const filterPostsByLength = (filteredData: Post[], filterValue: string): Post[] => {
 	switch (filterValue) {
