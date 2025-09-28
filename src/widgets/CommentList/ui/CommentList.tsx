@@ -3,7 +3,7 @@ import type { FC } from "react";
 import styles from "./CommentList.module.scss";
 import { useGetCommentsByPostIdQuery } from "@/entities/comments/api/commentsApi";
 import { AsyncWrapper } from "@/widgets/AsyncWrapper/AsyncWrapper";
-import { PostComment } from "@/entities/post/ui/PostComment/PostComment";
+import { PostComment } from "@/entities/posts/ui/PostComment/PostComment";
 
 type CommentListProps = {
 	postId: number;

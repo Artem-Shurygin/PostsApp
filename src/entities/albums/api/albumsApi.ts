@@ -16,10 +16,42 @@ export const albumsApi = createApi({
 			providesTags: ["Album"],
 		}),
 		getAlbumByUserId: builder.query<Album[], number>({
-			query: (userId) => `albums/?userId=${userId}`,
-			providesTags: ( userId) => [{ type: "Album", userId }],
+			query: (id) => `albums/?userId=${id}`,
+			providesTags: (result, error, id) => [{ type: "Album", id }],
+		}),
+
+		createAlbum: builder.mutation<Album, Partial<Album>>({
+			query: (newPost) => ({
+				url: "albums",
+				method: "POST",
+				body: newPost,
+			}),
+			invalidatesTags: ["Album"],
+		}),
+
+		updateAlbum: builder.mutation<Album, Partial<Album>>({
+			query: ({ id, ...patch }) => ({
+				url: `albums/${id}`,
+				method: "PUT",
+				body: patch,
+			}),
+			invalidatesTags: (result, error, { id }) => [{ type: "Album", id }],
+		}),
+
+		deleteAlbum: builder.mutation<void, number>({
+			query: (id) => ({
+				url: `albums/${id}`,
+				method: "DELETE",
+			}),
+			invalidatesTags: (result, error, id) => [{ type: "Album", id }],
 		}),
 	}),
 });
 
-export const { useGetAlbumsQuery, useGetAlbumByUserIdQuery } = albumsApi;
+export const {
+	useGetAlbumsQuery,
+	useGetAlbumByUserIdQuery,
+	useCreateAlbumMutation,
+	useUpdateAlbumMutation,
+	useDeleteAlbumMutation,
+} = albumsApi;

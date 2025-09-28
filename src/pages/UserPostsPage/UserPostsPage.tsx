@@ -1,6 +1,6 @@
 import type { FC } from "react";
 import styles from "./UserPostsPage.module.scss";
-import { PostCard } from "@/entities/post/ui/PostCard/PostCard";
+import { PostCard } from "@/entities/posts/ui/PostCard/PostCard";
 import { useUser } from "@/shared/lib/user/useUser";
 import { useGetPostByUserIdQuery, type Post } from "@/entities/posts/api/postsApi";
 import { AsyncWrapper } from "@/widgets/AsyncWrapper/AsyncWrapper";

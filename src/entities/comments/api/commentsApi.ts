@@ -14,8 +14,8 @@ export const commentsApi = createApi({
 	tagTypes: ["Comment"],
 	endpoints: (builder) => ({
 		getCommentsByPostId: builder.query<Comment[], number>({
-			query: (postId) => `comments/?postId=${postId}`,
-			providesTags: (postId) => [{ type: "Comment", postId }],
+			query: (id) => `comments/?postId=${id}`,
+			providesTags: (result, error, id) => [{ type: "Comment", id }],
 		}),
 
 		createComment: builder.mutation<Comment, Partial<Comment>>({
@@ -26,7 +26,29 @@ export const commentsApi = createApi({
 			}),
 			invalidatesTags: ["Comment"],
 		}),
+
+		updateComment: builder.mutation<Comment, Partial<Comment>>({
+			query: ({ id, ...patch }) => ({
+				url: `comments/${id}`,
+				method: "PUT",
+				body: patch,
+			}),
+			invalidatesTags: (result, error, { id }) => [{ type: "Comment", id }],
+		}),
+
+		deleteComment: builder.mutation<void, number>({
+			query: (id) => ({
+				url: `comments/${id}`,
+				method: "DELETE",
+			}),
+			invalidatesTags: (result, error, id) => [{ type: "Comment", id }],
+		}),
 	}),
 });
 
-export const { useGetCommentsByPostIdQuery } = commentsApi;
+export const {
+	useGetCommentsByPostIdQuery,
+	useCreateCommentMutation,
+	useUpdateCommentMutation,
+	useDeleteCommentMutation,
+} = commentsApi;

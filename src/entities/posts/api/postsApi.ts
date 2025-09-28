@@ -17,12 +17,12 @@ export const postsApi = createApi({
 			providesTags: ["Post"],
 		}),
 		getPostById: builder.query<Post, number>({
-			query: (postId) => `posts/${postId}`,
-			providesTags: (postId) => [{ type: "Post", postId }],
+			query: (id) => `posts/${id}`,
+			providesTags: (result, error, id) => [{ type: "Post", id }],
 		}),
 		getPostByUserId: builder.query<Post[], number>({
-			query: (UserId) => `posts/?userId=${UserId}`,
-			providesTags: (UserId) => [{ type: "Post", UserId }],
+			query: (id) => `posts/?userId=${id}`,
+			providesTags: (result, error, id) => [{ type: "Post", id }],
 		}),
 
 		createPost: builder.mutation<Post, Partial<Post>>({
@@ -31,7 +31,7 @@ export const postsApi = createApi({
 				method: "POST",
 				body: newPost,
 			}),
-			invalidatesTags: [{ type: "Post", id: "LIST" }],
+			invalidatesTags: ["Post"],
 		}),
 
 		updatePost: builder.mutation<Post, Partial<Post>>({
@@ -48,12 +48,16 @@ export const postsApi = createApi({
 				url: `posts/${id}`,
 				method: "DELETE",
 			}),
-			invalidatesTags: (result, error, id) => [
-				{ type: "Post", id },
-				{ type: "Post", id: "LIST" },
-			],
+			invalidatesTags: (result, error, id) => [{ type: "Post", id }],
 		}),
 	}),
 });
 
-export const { useGetPostsQuery, useGetPostByIdQuery, useGetPostByUserIdQuery } = postsApi;
+export const {
+	useGetPostsQuery,
+	useGetPostByIdQuery,
+	useGetPostByUserIdQuery,
+	useCreatePostMutation,
+	useUpdatePostMutation,
+	useDeletePostMutation,
+} = postsApi;

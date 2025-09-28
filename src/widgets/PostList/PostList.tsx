@@ -1,4 +1,4 @@
-import { PostCard } from "@/entities/post/ui/PostCard/PostCard";
+import { PostCard } from "@/entities/posts/ui/PostCard/PostCard";
 import { PostLengthFilter } from "@/features/PostLengthFilter/ui/PostLengthFilter";
 import styles from "./PostList.module.scss";
 import { usePosts } from "./model/hooks/usePosts";
