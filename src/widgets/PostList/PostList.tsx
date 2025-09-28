@@ -1,30 +1,22 @@
-import clsx from "clsx";
-import { PostCard } from "@/entities/post/ui/PostCard/PostCard";
+import { PostCard } from "@/entities/posts/ui/PostCard/PostCard";
+import { PostLengthFilter } from "@/features/PostLengthFilter/ui/PostLengthFilter";
 import styles from "./PostList.module.scss";
-import { testPostData } from "@/shared/mocks/testPostData";
-import { formatDate } from "@/utils/formatDate";
-
-type Post = {
-	id: number;
-	title: string;
-	text: string;
-	date: string;
-};
-import { useTheme } from "@/shared/lib/theme/useTheme";
+import { usePosts } from "./model/hooks/usePosts";
+import type { Post } from "@/entities/posts/model/types";
+import { AsyncWrapper } from "@/widgets/AsyncWrapper/AsyncWrapper";
+import { ThemeWrapper } from "@/widgets/ThemeWrapper/ThemeWrapper";
 
 export const PostList = () => {
-	const data: Post[] = testPostData;
-
-	const { theme } = useTheme();
+	const { data, storedPosts, isLoading, error, filteredData, handleDataFromFilter } = usePosts();
+	const posts = data || storedPosts;
 	return (
-		<div className={clsx(styles.wrapper, theme === "dark" && styles.wrapper__dark_theme)}>
-			<div className={clsx("container", styles.post_list, theme === "dark" && styles.post_list__dark_theme)}>
-				{data.map((post: Post) => {
-					return (
-						<PostCard key={post.id} id={post.id} title={post.title} text={post.text} date={formatDate(post.date)} />
-					);
+		<ThemeWrapper innerStyles={[styles.post_list]}>
+			<AsyncWrapper isLoading={isLoading} error={error}>
+				{posts && <PostLengthFilter posts={posts} onDataSend={handleDataFromFilter} />}
+				{(filteredData || posts)?.map((post: Post) => {
+					return <PostCard key={`postCard-${post.id}`} post={post} />;
 				})}
-			</div>
-		</div>
+			</AsyncWrapper>
+		</ThemeWrapper>
 	);
 };

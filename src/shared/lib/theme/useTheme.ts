@@ -5,7 +5,7 @@ export const useTheme = () => {
 	const context = useContext(ThemeContext);
 
 	if (context === undefined) {
-		throw new Error("useContext === undefined");
+		throw new Error("ThemeContext === undefined");
 	}
 
 	return context;

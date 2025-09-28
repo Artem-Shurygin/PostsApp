@@ -1,0 +1,9 @@
+.modal_footer {
+	display: flex;
+	justify-content: end;
+	text-align: justify;
+
+	& a {
+		color: blue;
+	}
+}

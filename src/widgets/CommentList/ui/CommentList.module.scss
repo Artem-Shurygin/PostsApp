@@ -1,0 +1,21 @@
+.comment_list {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	width: 100%;
+
+	&__toggle_comments_btn {
+		width: fit-content;
+		cursor: pointer;
+		border: none;
+		background-color: inherit;
+		color: rgb(8, 143, 253);
+	}
+
+	&__coomments_box {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		padding-left: 50px;
+	}
+}

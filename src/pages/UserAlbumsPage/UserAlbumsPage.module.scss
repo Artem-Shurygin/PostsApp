@@ -1,0 +1,22 @@
+@use "../../variables" as v;
+
+.albums {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+
+	&__title {
+		display: flex;
+		justify-content: center;
+	}
+
+	&__list {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	&__link {
+		color: v.$linkColor;
+	}
+}

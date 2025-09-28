@@ -1,17 +1,13 @@
-import type { FC, ReactNode } from "react";
+import { Outlet } from "react-router-dom";
 import { Footer } from "@/widgets/LayoutFooter/Footer";
 import { Header } from "@/widgets/LayoutHeader/Header";
 
-type MainLayoutProps = {
-	children: ReactNode;
-};
-
-export const MainLayout: FC<MainLayoutProps> = ({ children }) => {
+export const MainLayout = () => {
 	return (
-		<>
+		<div className="main_layout">
 			<Header />
-			{children}
+			<Outlet />
 			<Footer />
-		</>
+		</div>
 	);
 };
