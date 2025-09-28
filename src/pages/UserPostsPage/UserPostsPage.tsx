@@ -1,5 +1,5 @@
 import styles from "./UserPostsPage.module.scss";
-import { PostCard } from "@/entities/post/ui/PostCard/PostCard";
+import { PostCard } from "@/entities/posts/ui/PostCard/PostCard";
 import { useUser } from "@/shared/lib/user/useUser";
 import { useGetPostByUserIdQuery } from "@/entities/posts/api/postsApi";
 import type { Post } from "@/entities/posts/model/types";
